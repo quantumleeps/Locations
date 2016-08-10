@@ -1,22 +1,16 @@
 import { Component } from '@angular/core';
 import { Locations } from '../both/collections/locations.collection';
+import { LocationsList } from '../client/imports/locations/locations-list.component';
 import { Mongo } from 'meteor/mongo';
 
 import template from './app.component.html';
 
 @Component({
   selector: 'app',
-  template
+  template,
+  directives: [LocationsList]
 })
-export class AppComponent {
-
-  locations: Mongo.Cursor<any>;
-
-  constructor () {
-    this.locations = Locations.find();
-  }
-
-}
+export class AppComponent {}
 
 
 // this.locations = [
