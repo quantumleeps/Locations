@@ -15,8 +15,10 @@ export class LocationsList {
 
     constructor() {
         this.locations = Locations.find();
+        // console.log(this.locations)
     }
     
+
 
 }
 
