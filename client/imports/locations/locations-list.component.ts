@@ -15,20 +15,25 @@ import template from './locations-list.component.html';
 
 export class LocationsList extends MeteorComponent implements OnInit {
 
-    locations: Mongo.Cursor<any>;
+    filteredLocations: any;
+    locations: any;
+    locationId: string;
 
     constructor() {
         super();
     }
-    
-    ngOnInit () {
-        this.locations = Locations.find();
+
+    ngOnInit() {
+
+        this.locationId = 'Mh3wH5nn6GMg2euEw';
 
         this.subscribe('locations', () => {
-            this.locations = Locations.find();
-        }, true);
+            this.locations = Locations.find()
+        })
+
+        this.subscribe('location', this.locationId, () => {
+            this.filteredLocations = Locations.find({_id: this.locationId},{name:1})
+        })
+
     }
 }
-
-
-

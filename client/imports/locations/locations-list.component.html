@@ -5,5 +5,12 @@ Locations:
     <p>
       {{location.region}}, {{location.country}}
     </p>
+    <p>{{location._id}}</p>
+  </li>
+</ul>
+Filtered Locations:
+<ul>
+  <li *ngFor="let location of filteredLocations">
+    <span>{{location.name}}</span>
   </li>
 </ul>
