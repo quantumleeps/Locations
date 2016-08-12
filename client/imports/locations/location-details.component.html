@@ -1,6 +1,7 @@
 <header *ngIf="location && !editing">
     <a [routerLink]="['/']">Back to Locations</a>
     <h1>{{location.name}}</h1>
+    <h2>{{location.shortName}}
     <h2>{{location.region}}, {{location.country}}</h2>
     <!--<h3>7.2 USMGD Seawater Reverse Osmosis Desalination facility</h3>-->
     <button (click)="editLocation()">Edit text</button>
@@ -10,6 +11,9 @@
     <label>Name</label>
     <input type="text" [(ngModel)]="location.name" name="name">
     <br>
+    <label>Short name</label>
+    <input type="text" [(ngModel)]="location.shortName" name="shortName">
+    <br>
     <label>Region</label>
     <input type="text" [(ngModel)]="location.region" name="region">
     <br>
@@ -18,5 +22,5 @@
     <br>    
     <button type="submit">Save</button>
 </form>
-
+<br>
 <data-groups-list [curLocation]="locationId"></data-groups-list>

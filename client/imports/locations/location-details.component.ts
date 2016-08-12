@@ -46,6 +46,7 @@ export class LocationDetails extends MeteorComponent implements OnInit {
         Locations.update(this.location._id, {
             $set: {
                 name: this.location.name,
+                shortName: this.location.shortName,
                 region: this.location.region,
                 country: this.location.country
             }
