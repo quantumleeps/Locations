@@ -29,7 +29,7 @@ export class LocationDetails extends MeteorComponent implements OnInit {
             .map(params => params['locationId'])
             .subscribe(locationId => {
                 this.locationId = locationId;
-                console.log(locationId)
+                // console.log(locationId)
 
                 this.subscribe('location', this.locationId, () => {
                     this.location = Locations.findOne(this.locationId);

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Locations } from '../../../both/collections/locations.collection';
 import { DataGroups } from '../../../both/collections/data-groups.collection';
@@ -11,7 +12,7 @@ import template from './data-groups-list.component.html';
 @Component({
     selector: 'data-groups-list',
     template,
-    directives: [DataGroupsForm]
+    directives: [DataGroupsForm, ROUTER_DIRECTIVES]
 })
 
 export class DataGroupsList extends MeteorComponent implements OnInit {

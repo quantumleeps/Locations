@@ -10,8 +10,9 @@ Data Groups:
 </div>
 <ul>
   <li *ngFor="let dataGroup of dataGroups">
-    <span>{{dataGroup.name}}</span>
+    <span><a [routerLink]="['/location', curLocation, '/data-group/', dataGroup._id ]">{{dataGroup.name}}</a></span>
     <p>
+      <!--{{dataGroup._id}}-->
       <!--{{dataGroup.locationId}}-->
     </p>
     
