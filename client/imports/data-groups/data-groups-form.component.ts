@@ -28,12 +28,16 @@ export class DataGroupsForm implements OnInit {
     }
 
     addDataGroup () {
-        // if (this.addDataGroupsForm.valid) {
-        //     DataGroups.insert(this.addDataGroupsForm.value);
 
-        //     this.resetForm();
-        // }
-        console.log(this.curLocation)
+        if (this.addDataGroupsForm.valid) {
+                var tempVal = this.addDataGroupsForm.value
+                tempVal['locationId'] = this.curLocation;
+                DataGroups.insert(tempVal);
+
+
+            this.resetForm();
+        }
+        // console.log(temp)
     }
 
 }
