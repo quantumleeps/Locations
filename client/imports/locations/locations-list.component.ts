@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 import { LocationsForm } from './locations-form.component';
@@ -11,7 +12,7 @@ import template from './locations-list.component.html';
 @Component({
     selector: 'locations-list',
     template,
-    directives: [LocationsForm],
+    directives: [LocationsForm, ROUTER_DIRECTIVES],
     styles: [`
         .location-block {
             margin-top: 10px;
@@ -22,9 +23,9 @@ import template from './locations-list.component.html';
 
 export class LocationsList extends MeteorComponent implements OnInit {
 
-    filteredLocations: any;
+    // filteredLocations: any;
     locations: any;
-    locationId: string;
+    // locationId: string;
     locationAddToggled: boolean;
 
     constructor() {
@@ -33,15 +34,15 @@ export class LocationsList extends MeteorComponent implements OnInit {
 
     ngOnInit() {
         this.locationAddToggled = false;
-        this.locationId = 'Mh3wH5nn6GMg2euEw';
+        // this.locationId = 'Mh3wH5nn6GMg2euEw';
 
         this.subscribe('locations', () => {
             this.locations = Locations.find()
         })
 
-        this.subscribe('location', this.locationId, () => {
-            this.filteredLocations = Locations.find({_id: this.locationId})
-        })
+        // this.subscribe('location', this.locationId, () => {
+        //     this.filteredLocations = Locations.find({_id: this.locationId})
+        // })
 
     }
 

@@ -9,14 +9,14 @@ Locations:
   <hr>
 </div>
 <div class="location-block" *ngFor="let location of locations">
-  <span><b>{{location.name}}</b> ({{location.shortName}})</span>
+  <span><b><a [routerLink]="['/location', location._id]">{{location.name}}</a></b> ({{location.shortName}})</span>
   <div>
     {{location.region}}, {{location.country}}
   </div>
-  <!--<p>{{location._id}}</p>-->
+  <p>{{location._id}}</p>
   <div>
-    <button (click)="editLocation()">Edit Location</button>
-    <button (click)="removeLocation(location)">Delete Location</button>
+    <!--<button (click)="editLocation()">Edit Location</button>
+    <button (click)="removeLocation(location)">Delete Location</button>-->
   </div>
 </div>
 <!--Filtered Locations:

@@ -1,11 +1,20 @@
 Data Groups:
+<br>
+<button (click)="changeAdderToggle()" [hidden]="dataGroupAddToggled">Add Data Group</button>
+<button (click)="changeAdderToggle()" [hidden]="!dataGroupAddToggled">Hide Add Data Group Form</button>
+
+<div [hidden]="!dataGroupAddToggled">
+  <hr>
+  <data-groups-form [curLocation]="curLocation"></data-groups-form>
+  <hr>
+</div>
 <ul>
   <li *ngFor="let dataGroup of dataGroups">
     <span>{{dataGroup.name}}</span>
     <p>
-      {{dataGroup.locationId}}
+      <!--{{dataGroup.locationId}}-->
     </p>
     
   </li>
 </ul>
-{{tempArray}}
+<!--{{curLocation}}-->
