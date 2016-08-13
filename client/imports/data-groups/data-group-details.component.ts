@@ -4,7 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import { MeteorComponent } from 'angular2-meteor';
 
 // import { DataGroupsList } from '../data-groups/data-groups-list.component';
-// import { Locations } from '../../../both/collections/locations.collection';
+import { Locations } from '../../../both/collections/locations.collection';
 import { DataGroups } from '../../../both/collections/data-groups.collection'
 
 import template from './data-group-details.component.html';
@@ -19,8 +19,8 @@ export class DataGroupDetails extends MeteorComponent implements OnInit {
     locationId: string;
     dataGroupId: string
     location: any;
-    dataGroup: any;
     editing: boolean;
+    dataGroup: any;
 
     constructor(private route: ActivatedRoute) {
         super();
@@ -28,35 +28,47 @@ export class DataGroupDetails extends MeteorComponent implements OnInit {
     }
 
     ngOnInit() {
+
         this.route.params
             .map(params => params['dataGroupId'])
             .subscribe(dataGroupId => {
                 this.dataGroupId = dataGroupId;
-                console.log(this.dataGroupId)
+                // console.log(this.dataGroupId)
 
                 this.subscribe('data-group', this.dataGroupId, () => {
                     this.dataGroup = DataGroups.findOne(this.dataGroupId);
+                    // console.log(this.dataGroup)
                 }, true);
+
             });
-            // console.log(tes
+
+        this.route.params
+            .map(params => params['locationId'])
+            .subscribe(locationId => {
+                this.locationId = locationId;
+                // console.log(this.locationId)
+
+                this.subscribe('location', this.locationId, () => {
+                    this.location = Locations.findOne(this.locationId);
+                    // console.log(this.location)
+                }, true);
+
+            })
     }
 
     editDataGroup() {
-        if (this.editing) {this.editing = false}
-        else {this.editing = true}
+        if (this.editing) { this.editing = false }
+        else { this.editing = true }
     }
 
-    // saveLocation() {
-    //     Locations.update(this.location._id, {
-    //         $set: {
-    //             name: this.location.name,
-    //             shortName: this.location.shortName,
-    //             region: this.location.region,
-    //             country: this.location.country
-    //         }
-    //     });  
-    //     this.editing = false;
-    // }
+    saveDataGroup() {
+        DataGroups.update(this.dataGroup._id, {
+            $set: {
+                name: this.dataGroup.name
+            }
+        });  
+        this.editing = false;
+    }
 
 
-}
+} 

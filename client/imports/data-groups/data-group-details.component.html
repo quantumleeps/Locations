@@ -1,11 +1,11 @@
 <!--{{dataGroup.name}}-->
 <header *ngIf="location && dataGroup && !editing">
-    <a [routerLink]="['/']">Back to data groups for {{location.name}}</a>
+    <a [routerLink]="['/location', location._id]">Back to data groups for {{location.name}}</a>
     <h1>{{dataGroup.name}} - {{location.name}}</h1>
     <button (click)="editDataGroup()">Edit text</button>
 </header>
 
-<form *ngIf="location && dataGroup && editing" (submit)="saveDataGroup()">
+<form *ngIf="dataGroup && editing" (submit)="saveDataGroup()">
     <label>Name</label>
     <input type="text" [(ngModel)]="dataGroup.name" name="name">
     <br>
