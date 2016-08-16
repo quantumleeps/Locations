@@ -3,7 +3,7 @@ import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 import { MeteorComponent } from 'angular2-meteor';
 
-// import { DataGroupsList } from '../data-groups/data-groups-list.component';
+import { DataPointsList } from '../data-points/data-points-list.component';
 import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
 import { DataGroup } from '../../../both/interfaces/data-group.interface';
@@ -14,7 +14,7 @@ import template from './data-group-details.component.html';
 @Component({
     selector: 'data-group-details',
     template,
-    directives: [ROUTER_DIRECTIVES/*, DataGroupsList*/]
+    directives: [ROUTER_DIRECTIVES, DataPointsList]
 })
 
 export class DataGroupDetails extends MeteorComponent implements OnInit {
