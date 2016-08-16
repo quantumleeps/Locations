@@ -8,6 +8,7 @@ import { MeteorComponent } from 'angular2-meteor';
 // import { Locations } from '../../../both/collections/locations.collection';
 import { DataPoint } from '../../../both/interfaces/data-point.interface';
 import { DataPoints } from '../../../both/collections/data-points.collection';
+import { DataPointsForm } from './data-points-form.component';
 
 
 import template from './data-points-list.component.html';
@@ -15,7 +16,7 @@ import template from './data-points-list.component.html';
 @Component({
     selector: 'data-points-list',
     template,
-    directives: [/*LocationsForm,*/ ROUTER_DIRECTIVES],
+    directives: [DataPointsForm, ROUTER_DIRECTIVES],
     styles: [/*`
         .location-block {
             margin-top: 10px;
@@ -57,10 +58,10 @@ export class DataPointsList extends MeteorComponent implements OnInit {
 
     }
 
-    // changeAdderToggle() {
-    //     if (this.dataGroupAddToggled === true) {
-    //         this.dataGroupAddToggled = false;
-    //     } else { this.dataGroupAddToggled = true; }
-    // }
+    changeAdderToggle() {
+        if (this.dataPointAddToggled === true) {
+            this.dataPointAddToggled = false;
+        } else { this.dataPointAddToggled = true; }
+    }
 
 }

@@ -1,16 +1,16 @@
 Data Points:
-<!--
+
 <br>
-<button (click)="changeAdderToggle()" [hidden]="dataGroupAddToggled">Add Data Group</button>
-<button (click)="changeAdderToggle()" [hidden]="!dataGroupAddToggled">Hide Add Data Group Form</button>
+<button (click)="changeAdderToggle()" [hidden]="dataPointAddToggled">Add Data Point</button>
+<button (click)="changeAdderToggle()" [hidden]="!dataPointAddToggled">Hide Add Data Point Form</button>
 
 
-<div [hidden]="!dataGroupAddToggled">
+<div [hidden]="!dataPointAddToggled">
   <hr>
-  <data-groups-form [curLocation]="curLocation"></data-groups-form>
+  <data-points-form [curLocation]="curLocation" [curDataGroup]="curDataGroup"></data-groups-form>
   <hr>
 </div>
--->
+
 <ul>
   <li *ngFor="let dataPoint of dataPoints">
     <span><!--<a [routerLink]="['/location', curLocation, '/data-group/', dataGroup._id ]">-->{{dataPoint.description}}<!--</a>--></span>

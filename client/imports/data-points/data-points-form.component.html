@@ -1,0 +1,15 @@
+<form [formGroup]="addDataPointForm" (ngSubmit)="addDataPoint()">
+    <label>Description</label>
+    <input type="text" formControlName="description">
+
+    <label>Units</label>
+    <input type="text" formControlName="units">
+    
+    <label>Lower Limit</label>
+    <input type="text" formControlName="lowerLimit">
+
+    <label>Upper Limit</label>
+    <input type="text" formControlName="upperLimit">
+    
+    <button type="submit">Add Location</button>
+</form>
