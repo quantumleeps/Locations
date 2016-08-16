@@ -4,6 +4,7 @@ import { MeteorComponent } from 'angular2-meteor';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Locations } from '../../../both/collections/locations.collection';
+import { DataGroup } from '../../../both/interfaces/data-group.interface';
 import { DataGroups } from '../../../both/collections/data-groups.collection';
 import { DataGroupsForm } from './data-groups-form.component';
  
@@ -18,7 +19,7 @@ import template from './data-groups-list.component.html';
 export class DataGroupsList extends MeteorComponent implements OnInit {
 
     @Input() curLocation: string;
-    dataGroups: any;
+    dataGroups: Mongo.Cursor<DataGroup>;
     // tempArray: any[];
     // locationId: string;
     dataGroupAddToggled: boolean;

@@ -4,7 +4,9 @@ import { Tracker } from 'meteor/tracker';
 import { MeteorComponent } from 'angular2-meteor';
 
 // import { DataGroupsList } from '../data-groups/data-groups-list.component';
+import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
+import { DataGroup } from '../../../both/interfaces/data-group.interface';
 import { DataGroups } from '../../../both/collections/data-groups.collection'
 
 import template from './data-group-details.component.html';
@@ -18,9 +20,9 @@ import template from './data-group-details.component.html';
 export class DataGroupDetails extends MeteorComponent implements OnInit {
     locationId: string;
     dataGroupId: string
-    location: any;
+    location: Location;
     editing: boolean;
-    dataGroup: any;
+    dataGroup: DataGroup;
 
     constructor(private route: ActivatedRoute) {
         super();

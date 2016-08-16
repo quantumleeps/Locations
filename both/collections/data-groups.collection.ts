@@ -1,3 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 
-export const DataGroups = new Mongo.Collection('data-groups')
+import { DataGroup } from '../interfaces/data-group.interface';
+
+export const DataGroups = new Mongo.Collection<DataGroup>('data-groups')
