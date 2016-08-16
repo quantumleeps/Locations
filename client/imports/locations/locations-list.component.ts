@@ -4,6 +4,7 @@ import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 import { LocationsForm } from './locations-form.component';
 
+import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
 
 
@@ -24,7 +25,7 @@ import template from './locations-list.component.html';
 export class LocationsList extends MeteorComponent implements OnInit {
 
     // filteredLocations: any;
-    locations: any;
+    locations: Mongo.Cursor<Location>;
     // locationId: string;
     locationAddToggled: boolean;
 

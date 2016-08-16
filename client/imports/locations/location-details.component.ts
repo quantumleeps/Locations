@@ -4,6 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { DataGroupsList } from '../data-groups/data-groups-list.component';
+import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
 
 import template from './location-details.component.html';
@@ -16,7 +17,7 @@ import template from './location-details.component.html';
 
 export class LocationDetails extends MeteorComponent implements OnInit {
     locationId: string;
-    location: any;
+    location: Location;
     editing: boolean;
 
     constructor(private route: ActivatedRoute) {
