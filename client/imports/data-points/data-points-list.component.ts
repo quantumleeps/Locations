@@ -64,4 +64,8 @@ export class DataPointsList extends MeteorComponent implements OnInit {
         } else { this.dataPointAddToggled = true; }
     }
 
+    addTag(value) {
+        console.log(value)
+    }
+
 }

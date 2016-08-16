@@ -6,20 +6,24 @@ Data Points:
 
 
 <div [hidden]="!dataPointAddToggled">
-  <hr>
-  <data-points-form [curLocation]="curLocation" [curDataGroup]="curDataGroup"></data-groups-form>
-  <hr>
+    <hr>
+    <data-points-form [curLocation]="curLocation" [curDataGroup]="curDataGroup"></data-groups-form>
+        <hr>
 </div>
 
 <ul>
-  <li *ngFor="let dataPoint of dataPoints">
-    <span><!--<a [routerLink]="['/location', curLocation, '/data-group/', dataGroup._id ]">-->{{dataPoint.description}}<!--</a>--></span>
-    <p>
-      {{dataPoint._id}}<br>
-      {{dataPoint.locationId}}<br>
-      {{dataPoint.dataGroupId}}<br>
-    </p>
-    
-  </li>
+    <li *ngFor="let dataPoint of dataPoints">
+        <span><!--<a [routerLink]="['/location', curLocation, '/data-group/', dataGroup._id ]">-->{{dataPoint.description}}<!--</a>--></span>
+        <label>Units: </label>{{dataPoint.units}}<br>
+        <label>Acceptable Range: </label>{{dataPoint.lowerLimit}} - {{dataPoint.upperLimit}}<br>
+        <label>Process Tag: </label><br>
+        <label>Meta Tags: </label>
+        <ul>
+            <li>
+                <input type="text" [(ngModel)]="dataPoint.tagInput"><button (click)="addTag(dataPoint.tagInput)">Add Tag</button>
+            </li>
+        </ul>
+        <br>
+    </li>
 </ul>
 <!--{{curLocation}}-->
