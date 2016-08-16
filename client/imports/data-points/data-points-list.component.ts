@@ -64,8 +64,68 @@ export class DataPointsList extends MeteorComponent implements OnInit {
         } else { this.dataPointAddToggled = true; }
     }
 
-    addTag(value) {
-        console.log(value)
+    addTag(dataPoint, value) {
+        DataPoints.update(dataPoint._id, {
+            $push: {
+                metaTags: value,
+            }
+        });
+        dataPoint.tagInput="";
+
     }
 
+
+    saveDescription(dataPoint) {
+        DataPoints.update(dataPoint._id, {
+            $set: {
+                description: dataPoint.description,
+            }
+        });  
+        dataPoint.isEditingDescription=false;
+    }
+
+    saveUnits(dataPoint) {
+        DataPoints.update(dataPoint._id, {
+            $set: {
+                units: dataPoint.units,
+            }
+        });  
+        dataPoint.isEditingUnits=false;
+    }
+
+
+    saveLowerLimit(dataPoint) {
+        DataPoints.update(dataPoint._id, {
+            $set: {
+                lowerLimit: dataPoint.lowerLimit,
+            }
+        });  
+        dataPoint.isEditingLL=false;
+    }
+
+    saveUpperLimit(dataPoint) {
+        DataPoints.update(dataPoint._id, {
+            $set: {
+                upperLimit: dataPoint.upperLimit,
+            }
+        });  
+        dataPoint.isEditingUL=false;
+    }
+
+    saveProcessTag(dataPoint) {
+        DataPoints.update(dataPoint._id, {
+            $set: {
+                processTag: dataPoint.processTag,
+            }
+        });  
+        dataPoint.isEditingPT=false;
+    }
+
+    // deleteTag(dataPoint, index) {
+    //     DataPoints.update(dataPoint._id, {
+    //         $pull: {
+    //             metaTags: index,
+    //         }
+    //     });    
+    // }
 }

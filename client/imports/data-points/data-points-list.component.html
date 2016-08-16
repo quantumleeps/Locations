@@ -13,15 +13,40 @@ Data Points:
 
 <ul>
     <li *ngFor="let dataPoint of dataPoints">
-        <span><!--<a [routerLink]="['/location', curLocation, '/data-group/', dataGroup._id ]">-->{{dataPoint.description}}<!--</a>--></span>
-        <label>Units: </label>{{dataPoint.units}}<br>
-        <label>Acceptable Range: </label>{{dataPoint.lowerLimit}} - {{dataPoint.upperLimit}}<br>
-        <label>Process Tag: </label><br>
-        <label>Meta Tags: </label>
+       
+        <label><b>Description: </b></label>
+        <span [hidden]="dataPoint.isEditingDescription">{{dataPoint.description}} <button (click)="dataPoint.isEditingDescription=true">edit</button></span>
+        <span [hidden]="!dataPoint.isEditingDescription"><input type="text" [(ngModel)]="dataPoint.description">
+        <button (click)="saveDescription(dataPoint)">Save</button></span><br>
+
+        <label><b>Units: </b></label>
+        <span [hidden]="dataPoint.isEditingUnits">{{dataPoint.units}} <button (click)="dataPoint.isEditingUnits=true">edit</button></span>
+        <span [hidden]="!dataPoint.isEditingUnits"><input type="text" [(ngModel)]="dataPoint.units">
+        <button (click)="saveUnits(dataPoint)">Save</button></span><br>
+
+        <label><b>Lower alarm limit: </b></label>
+        <span [hidden]="dataPoint.isEditingLL">{{dataPoint.lowerLimit}} <button (click)="dataPoint.isEditingLL=true">edit</button></span>
+        <span [hidden]="!dataPoint.isEditingLL"><input type="text" [(ngModel)]="dataPoint.lowerLimit">
+        <button (click)="saveLowerLimit(dataPoint)">Save</button></span><br>
+
+        <label><b>Upper alarm limit: </b></label>
+        <span [hidden]="dataPoint.isEditingUL">{{dataPoint.upperLimit}} <button (click)="dataPoint.isEditingUL=true">edit</button></span>
+        <span [hidden]="!dataPoint.isEditingUL"><input type="text" [(ngModel)]="dataPoint.upperLimit">
+        <button (click)="saveUpperLimit(dataPoint)">Save</button></span><br>
+
+        <label><b>Process tag: </b></label>
+        <span [hidden]="dataPoint.isEditingPT">{{dataPoint.processTag}} <button (click)="dataPoint.isEditingPT=true">edit</button></span>
+        <span [hidden]="!dataPoint.isEditingPT"><input type="text" [(ngModel)]="dataPoint.processTag">
+        <button (click)="saveProcessTag(dataPoint)">Save</button></span><br>
+
+        <!--{{dataPoint._id}}-->
+
+     <label><b>Meta tags</b>: </label>
         <ul>
-            <li>
-                <input type="text" [(ngModel)]="dataPoint.tagInput"><button (click)="addTag(dataPoint.tagInput)">Add Tag</button>
-            </li>
+            <span *ngFor="let tag of dataPoint.metaTags; let i = index">
+                <li>{{i}} - {{tag}} <!--<button (click)="deleteTag(dataPoint,i)">Delete</button>--></li>
+            </span>
+            <li><input type="text" [(ngModel)]="dataPoint.tagInput"><button (click)="addTag(dataPoint,dataPoint.tagInput)">Add Tag</button></li>
         </ul>
         <br>
     </li>
