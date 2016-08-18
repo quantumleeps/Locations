@@ -5,9 +5,9 @@ import { LocationDetails } from './imports/locations/location-details.component'
 import { DataGroupDetails } from './imports/data-groups/data-group-details.component';
 
 const routes: RouterConfig = [
-    { path: '', component: LocationsList },
-    { path: 'location/:locationId', component: LocationDetails },
-    { path: 'location/:locationId/data-group/:dataGroupId', component: DataGroupDetails }
+    { path: 'configure', component: LocationsList },
+    { path: 'configure/location/:locationId', component: LocationDetails },
+    { path: 'configure/location/:locationId/data-group/:dataGroupId', component: DataGroupDetails }
 
     ];
 
