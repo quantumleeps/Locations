@@ -8,26 +8,38 @@ import template from './home.component.html';
     directives: [ROUTER_DIRECTIVES],
     styles: [`
 
+    html, body {
+        height: 100vh;
+    }
+
+    .wrapper {
+        background-color: #25677D;
+        height: 100vh;
+    }
+
     .clickbox {
-        border: 1px solid black;
+        border: 2px solid black;
         margin-top: 10px;
         margin-bottom: 10px;
         text-align: center;
+        background-color: white;
+        width: 95vw;
     }
     .clickbox a {
         display: block;
         width: 100%;
         padding: 20px;
+        font-size: 100px;
+        color: #009BCF;
     }
 
     .page-title {
-        font-size: 30px;
+        font-size: 70px;
+        color: white;
     }
     `]
 })
 
 export class HomeComponent {
-    test() {
-        console.log("testingthisthingfuckfuck")
-    }
+
 }
