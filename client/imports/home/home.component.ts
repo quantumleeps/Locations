@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 import template from './home.component.html';
-@Component({
 
+@Component({
+    template
 })
 
 export class HomeComponent {
