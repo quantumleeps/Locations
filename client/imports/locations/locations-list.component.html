@@ -9,7 +9,7 @@ Locations:
   <hr>
 </div>
 <div class="location-block" *ngFor="let location of locations">
-  <span><b><a [routerLink]="['/location', location._id]">{{location.name}}</a></b> ({{location.shortName}})</span>
+  <span><b><a [routerLink]="['location', location._id]">{{location.name}}</a></b> ({{location.shortName}})</span>
   <div>
     {{location.region}}, {{location.country}}
   </div>
