@@ -1,1 +1,13 @@
 @import "{}/node_modules/bootstrap/scss/bootstrap.scss";
+@import "./imports/home/home.component.scss";
+
+ html, body {
+        height: 100vh;
+        background-color: #25677D;
+
+    }
+
+    .page-title {
+        font-size: 70px;
+    }
+

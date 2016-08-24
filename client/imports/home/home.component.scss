@@ -1,0 +1,24 @@
+.wrapper {
+    height: 100vh;
+}
+
+.clickbox {
+    border: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    width: 95vw;
+}
+
+.clickbox a {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-size: 100px;
+    color: #009BCF;
+}
+
+.page-title {
+    color: white;
+}
