@@ -30,21 +30,22 @@ export class LocationSelect extends MeteorComponent implements OnInit {
             this.locations = Locations.find()
         })
 
-        this.subscribe('collected-data-record', () => {
-            this.curRecord = CollectedData.find({}, { sort: { _id: -1 }, limit: 1 });
-        }, true);
+        // this.subscribe('collected-data-record', () => {
+        //     this.curRecord = CollectedData.find({}, { sort: { _id: -1 }, limit: 1 });
+        // }, true);
 
     }
 
     clickLocation(location) {
 
-        //create new record in collection 
-        CollectedData.insert({ locationId: location._id })
-
-        //find _id of new record
-
+        //create new record in collection and find Id of current record
+        this.curRecord = CollectedData.insert({ locationId: location._id }, function( error, result) {
+            if (error) console.log (error);
+            if (result) return result;
+        })
         console.log(this.curRecord)
 
+        //navigate to new record
 
     }
 }
