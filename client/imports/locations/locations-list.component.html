@@ -1,18 +1,18 @@
-<a [routerLink]="['']">Back to Homepage</a>
-<br>
-<br> <span class="page-title">Locations:</span>
-<br>
-<button (click)="changeAdderToggle()" [hidden]="locationAddToggled">Add Location</button>
-<button (click)="changeAdderToggle()" [hidden]="!locationAddToggled">Hide Add Location Form</button>
+<a class="navlink" [routerLink]="['']">Back to Homepage</a>
+<br><span class="page-title">Locations:</span>
 
-<div [hidden]="!locationAddToggled">
-  <hr>
-  <locations-form></locations-form>
-  <hr>
-</div>
-<div class="location-block" *ngFor="let location of locations">
-  <span><b><a [routerLink]="['location', location._id]">{{location.name}}</a></b> ({{location.shortName}})</span>
-  <div>
-    {{location.region}}, {{location.country}}
+<div class="container">
+
+  <button (click)="changeAdderToggle()" [hidden]="locationAddToggled">Add Location</button>
+  <button (click)="changeAdderToggle()" [hidden]="!locationAddToggled">Hide Add Location Form</button>
+
+  <div [hidden]=" !locationAddToggled ">
+    <locations-form></locations-form>
+  </div>
+  <div class="location-block" *ngFor="let location of locations ">
+    <span><b><a [routerLink]="[ 'location', location._id] ">{{location.name}}</a></b> ({{location.shortName}})</span>
+    <div>
+      {{location.region}}, {{location.country}}
+    </div>
   </div>
 </div>

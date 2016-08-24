@@ -16,8 +16,9 @@ import template from './locations-list.component.html';
     directives: [LocationsForm, ROUTER_DIRECTIVES],
     styles: [`
         .location-block {
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid black;
         }
     `]
 })

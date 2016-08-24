@@ -1,0 +1,36 @@
+Data Points:
+
+
+<ul>
+    <li *ngFor="let dataPoint of dataPoints">
+       
+        <label><b>Description: </b></label>
+        {{dataPoint.description}}
+        <br>
+
+        <label><b>Units: </b></label>
+        {{dataPoint.units}} 
+        <br>
+
+        <label><b>Lower alarm limit: </b></label>
+        {{dataPoint.lowerLimit}}
+        <br>
+
+        <label><b>Upper alarm limit: </b></label>
+        {{dataPoint.upperLimit}} 
+        <br>
+
+        <label><b>Process tag: </b></label>
+        {{dataPoint.processTag}} <br>
+
+
+     <label><b>Meta tags</b>: </label>
+        <ul>
+            <span *ngFor="let tag of dataPoint.metaTags; let i = index">
+                <li>{{i}} - {{tag}} <!--<button (click)="deleteTag(dataPoint,i)">Delete</button>--></li>
+            </span>
+        </ul>
+        <br>
+    </li>
+</ul>
+<button (click)="clickThis()">testing</button>

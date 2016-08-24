@@ -1,13 +1,53 @@
 @import "{}/node_modules/bootstrap/scss/bootstrap.scss";
 @import "./imports/home/home.component.scss";
 
- html, body {
-        height: 100vh;
-        background-color: #25677D;
+html, body {
+    height: 100vh;
+    background-color: #25677D;
+    font-size: 50px;
 
-    }
+}
 
-    .page-title {
-        font-size: 70px;
-    }
+.page-title {
+    font-size: 70px;
+    margin-left: 10px;
+}
 
+
+.clickbox {
+    border: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    width: 95vw;
+}
+
+.clickbox a {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-size: 80px;
+    color: #009BCF;
+}
+
+.navlink {
+    color: white;
+    font-size: 60px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.navlink:hover {
+    color: #C9EDFF; 
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #C9EDFF;
+}

@@ -1,15 +1,15 @@
 <form [formGroup]="addLocationForm" (ngSubmit)="addLocation()">
     <label>Name</label>
     <input type="text" formControlName="name">
-
+    <br>
     <label>Short-name</label>
     <input type="text" formControlName="shortName">
-    
+    <br>
     <label>Region</label>
     <input type="text" formControlName="region">
-
+    <br>
     <label>Country</label>
     <input type="text" formControlName="country">
-    
+    <br>
     <button type="submit">Add Location</button>
 </form>
