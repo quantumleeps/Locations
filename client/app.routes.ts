@@ -10,7 +10,7 @@ import { DataInputView } from './imports/data-input/data-input-view.component';
 const routes: RouterConfig = [
     { path: '', component: HomeComponent },
     { path: 'add-data', component: LocationSelect },
-    { path: 'test', component: DataInputView },
+    { path: 'add-data/:dataInputId', component: DataInputView },
     { path: 'configure', component: LocationsList },
     { path: 'configure/location/:locationId', component: LocationDetails },
     { path: 'configure/location/:locationId/data-group/:dataGroupId', component: DataGroupDetails }

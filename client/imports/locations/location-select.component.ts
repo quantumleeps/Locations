@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 
@@ -19,9 +19,11 @@ export class LocationSelect extends MeteorComponent implements OnInit {
 
     locations: Mongo.Cursor<Location>;
     curRecord: any;
+    dataViewId: any;
 
-    constructor() {
+    constructor(private router: Router) {
         super();
+        this.dataViewId = 'vZBuLmKKmctMgG623';
     }
 
     ngOnInit() {
@@ -46,6 +48,7 @@ export class LocationSelect extends MeteorComponent implements OnInit {
         console.log(this.curRecord)
 
         //navigate to new record
+        this.router.navigate(['/add-data',this.curRecord]);
 
     }
 }
