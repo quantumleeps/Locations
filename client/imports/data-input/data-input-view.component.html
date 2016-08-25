@@ -1,5 +1,11 @@
+
 <button (click)="cancelEntry()">Cancel record</button>
 <button (click)="saveEntry()">Submit record</button>
+<br>
+<span *ngFor="let dataGroup of dataGroups">
+    <button [class.btn-success]="dataGroup._id === curDataGroup" class="btn"
+    (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
+</span>
 <br>
 Enter data for {{curLocationName}}:
 
@@ -7,3 +13,4 @@ Enter data for {{curLocationName}}:
 <div *ngFor="let dataPoint of dataPoints">
     <data-input-form [dataPointId]="dataPoint._id"></data-input-form>
 </div>
+
