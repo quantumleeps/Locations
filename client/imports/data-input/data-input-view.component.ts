@@ -6,13 +6,15 @@ import { MeteorComponent } from 'angular2-meteor';
 import { DataPoint } from '../../../both/interfaces/data-point.interface';
 import { DataPoints } from '../../../both/collections/data-points.collection';
 
+import { DataInputForm } from './data-input-form.component';
+
 
 import template from './data-input-view.component.html';
 
 @Component({
     selector: 'data-input-view',
     template,
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, DataInputForm]
 })
 
 export class DataInputView extends MeteorComponent implements OnInit {

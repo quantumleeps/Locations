@@ -1,0 +1,38 @@
+.valid-input {
+    border: solid 3px green;
+    border-radius: 5px;
+}
+.greyed {
+    background-color: #e6e6e6;
+    color: white;
+}
+
+#units {
+    font-size: 30px
+}
+input {
+    font-size: 60px
+}
+#value-input {
+    height: 100px
+}
+#description {
+    font-size: 30px;
+}
+#field-options {
+    text-align: left;
+}
+#skip-text {
+    color: black;
+    margin-right: 4px;
+    padding: 5px;
+    font-size: 16px;
+}
+#override-text {
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+}
+#wrapper {
+    width: 97%;
+}
