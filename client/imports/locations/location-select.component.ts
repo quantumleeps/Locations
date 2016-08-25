@@ -45,7 +45,7 @@ export class LocationSelect extends MeteorComponent implements OnInit {
             if (error) console.log (error);
             if (result) return result;
         })
-        console.log(this.curRecord)
+        // console.log(this.curRecord)
 
         //navigate to new record
         this.router.navigate(['/add-data',this.curRecord]);

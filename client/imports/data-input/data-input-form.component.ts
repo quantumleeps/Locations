@@ -34,6 +34,7 @@ export class DataInputForm extends MeteorComponent implements OnInit {
     }
 
     ngOnInit() {
+        
 
         this.subscribe('data-point', this.dataPointId, () => {
             this.curDataPoint = DataPoints.findOne(this.dataPointId);
@@ -41,7 +42,6 @@ export class DataInputForm extends MeteorComponent implements OnInit {
             this.units = this.curDataPoint.units;
             this.upperLimit = this.curDataPoint.upperLimit;
             this.lowerLimit = this.curDataPoint.lowerLimit;
-            console.log(this.curDataPoint.units)
         }, true);
 
 

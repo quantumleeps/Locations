@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { DataPoint } from '../../../both/interfaces/data-point.interface';
 import { DataPoints } from '../../../both/collections/data-points.collection';
+import { Locations } from '../../../both/collections/locations.collection';
+import { CollectedData } from '../../../both/collections/collected-data.collection';
 
 import { DataInputForm } from './data-input-form.component';
 
@@ -19,32 +21,56 @@ import template from './data-input-view.component.html';
 
 export class DataInputView extends MeteorComponent implements OnInit {
 
-    // @Input() curLocation: string;
-    // @Input () curDataGroup: string;
-    curLocation: string;
-    curDataGroup: string;
+    dataInputId: string;
+    curLocation: any;
+    curLocationId: any;
+    curLocationName: any;
+    curRecord: any;
     dataPoints: any;
- 
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
         super();
-        this.curLocation = 'ZNX3Ehr8toXNDH4MH';
-        this.curDataGroup = 'vB5hQqhRo4wfKkuDN';
 
     }
 
     ngOnInit() {
 
-        this.subscribe('data-points', () => {
-            this.dataPoints = DataPoints.find({ "locationId": this.curLocation, "dataGroupId": this.curDataGroup })
-        })
+        this.route.params
+            .map(params => params['dataInputId'])
+            .subscribe(dataInputId => {
+                this.dataInputId = dataInputId;
 
-        this.router.navigateByUrl['configure']
+                this.subscribe('collected-data-record', this.dataInputId, () => {
+                    this.curRecord = CollectedData.findOne(this.dataInputId);
+                    this.curLocationId = this.curRecord.locationId;
+
+                    this.subscribe('location', this.curLocationId, () => {
+                        this.curLocation = Locations.findOne(this.curLocationId);
+                        // this.curLocationName = this.curLocation.name;
+                        this.curLocationName = this.curLocation.name;
+                    }, true);
+
+
+                }, true);
+
+
+            });
+
+        //need the name of the current location
+
+
+
+        //need the list of datagroups
+
+        this.subscribe('data-points', () => {
+            // this.dataPoints = DataPoints.find({ "locationId": this.curLocation, "dataGroupId": this.curDataGroup })
+            this.dataPoints = DataPoints.find({ "locationId": this.curLocationId })
+        })
 
     }
 
-    clickThis() {
-        this.router.navigate(['/configure']);
+    cancelEntry() {
+        this.router.navigate(['/add-data']);
     }
 
 }
