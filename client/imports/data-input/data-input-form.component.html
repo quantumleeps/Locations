@@ -16,7 +16,7 @@
 
 
 <!--{{description}} -- {{units}}-->
-<div id="wrapper" class="container-fluid">
+<!--<div id="wrapper" class="container-fluid">
     <form [formGroup]="addDataForm">
         <div id="description">
             {{description}}
@@ -26,4 +26,22 @@
             <div class="input-group-addon" id="units">{{units}}</div>
         </div>
     </form>
+</div>-->
+
+<div *ngFor="let dataPoint of dataPoints; let i = index">
+    <div id="wrapper" class="container-fluid">
+            <div id="description">
+                {{dataPoint.description}}
+            </div>
+            <div class="input-group field-input">
+                <input #input class="form-control" id="value-input" type="number" (blur)="leaveField(input.value, i)">
+                <div class="input-group-addon" id="units">{{dataPoint.units}}</div>
+            </div>
+        </form>
+    </div>
 </div>
+<!--
+<div *ngFor="let collectedDataPoint of collectedDataPoints">
+    {{collectedDataPoint.units}}
+</div>-->
+

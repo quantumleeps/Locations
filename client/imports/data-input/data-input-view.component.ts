@@ -30,6 +30,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
     dataPoints: any;
     dataGroups: any;
     curDataGroup: any;
+    dataPointsArray: any = [''];
 
     constructor(private router: Router, private route: ActivatedRoute) {
         super();
@@ -42,8 +43,6 @@ export class DataInputView extends MeteorComponent implements OnInit {
             .map(params => params['dataInputId'])
             .subscribe(dataInputId => {
                 this.dataInputId = dataInputId;
-
-
             });
 
         //need the name of the current location
@@ -55,9 +54,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
             this.subscribe('location', this.curLocationId, () => {
                 this.curLocation = Locations.findOne(this.curLocationId);
                 this.curLocationName = this.curLocation.name;
-
             });
-
 
             this.subscribe('data-groups', () => {
                 var temp = DataGroups.find({ "locationId": this.curLocationId })
@@ -69,8 +66,11 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.subscribe('data-points', () => {
                     this.dataPoints = DataPoints.find({ "locationId": this.curLocationId, "dataGroupId": this.curDataGroup })
                     // this.dataPoints = DataPoints.find({ "locationId": this.curLocationId })
+                    this.dataPointsArray = this.dataPoints.map(function (a) {
+                        return a;
+                    });
                 })
-
+                // console.log(this.test)
             })
 
         });
@@ -80,7 +80,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
 
 
 
-
+        // console.log(this.test)
     }
 
     cancelEntry() {
