@@ -28,14 +28,16 @@
     </form>
 </div>-->
 
-<div *ngFor="let dataPoint of dataPoints; let i = index">
+<div *ngFor="let dataInputField of dataInputFields; let i = index">
     <div id="wrapper" class="container-fluid">
             <div id="description">
-                {{dataPoint.description}}
+                {{dataInputField.description}} - {{dataInputField.dataGroupName}}
             </div>
             <div class="input-group field-input">
-                <input #input class="form-control" id="value-input" type="number" (blur)="leaveField(input.value, i)">
-                <div class="input-group-addon" id="units">{{dataPoint.units}}</div>
+                <input #input class="form-control" id="value-input" type="number" 
+                (change)="changeField()"
+                [(ngModel)]="dataInputField.processValue">
+                <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
             </div>
         </form>
     </div>

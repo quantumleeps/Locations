@@ -31,6 +31,8 @@ export class DataInputView extends MeteorComponent implements OnInit {
     dataGroups: any;
     curDataGroup: any;
     dataPointsArray: any = [''];
+    // displayFields: any = [{}];
+    dataInputFields: any
 
     constructor(private router: Router, private route: ActivatedRoute) {
         super();
@@ -65,23 +67,37 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.curDataGroup = this.dataGroups[0]._id
 
                 this.subscribe('data-points', () => {
-                    this.dataPoints = DataPoints.find({ "locationId": this.curLocationId, "dataGroupId": this.curDataGroup })
-                    // this.dataPoints = DataPoints.find({ "locationId": this.curLocationId })
-                    this.dataPointsArray = this.dataPoints.map(function (a) {
-                        return a;
-                    });
+                    this.dataPoints = DataPoints.find({ "locationId": this.curLocationId });
+                    this.dataInputFields = this.createIterable(this.dataPoints, this.dataGroups);
+                    console.log(this.dataInputFields)
+
+
+
+
+
+
+                    // // console.log(this.displayFields);
+                    // this.dataPointsArray = this.dataPoints.map(function (a) {
+                    //     return a;
+                    // });
+                    // for (var i = 0; i < this.dataPointsArray.length; i++) {
+                    //     var a = {
+                    //         description: this.dataPointsArray[i]['description'],
+                    //         units: this.dataPointsArray[i]['units'],
+                    //         processValue: "3",
+                    //         timestamp: ""
+                    //     }
+                    //     // this.displayFields.push(a)
+
+                    // }
+                    // // console.log(this.displayFields);
+                    
                 })
-                // console.log(this.test)
+
             })
 
         });
 
-
-        //need the list of datagroups
-
-
-
-        // console.log(this.test)
     }
 
     cancelEntry() {
@@ -97,4 +113,33 @@ export class DataInputView extends MeteorComponent implements OnInit {
 
     }
 
+    queryDataPointGroupName(datagroupid, datagroups) {
+        for (var i = 0; i < datagroups.length; i++) {
+            if (datagroups[i]._id === datagroupid) {
+                return datagroups[i].name;
+            }
+        }
+    }
+
+    createIterable(cursor, datagroups) {
+        var b = [];
+        cursor.forEach(function (item) {
+            var a = {
+                dataPointId: item['_id'],
+                description: item['description'],
+                units: item['units'],
+                dataGroupId: item['dataGroupId'], //can create function to display a dataGroupName with dataGroupId and use it here
+                processValue: "",
+                timestamp: "",
+                dataGroupName: ""
+            }
+            b.push(a)
+        })
+        for (var i = 0; i < b.length; i++) {
+            b[i]['dataGroupName'] = this.queryDataPointGroupName(b[i].dataGroupId, datagroups) 
+        }
+        return b
+    }
+    // console.log(b)
 }
+
