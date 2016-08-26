@@ -4,20 +4,22 @@ import { DataPoints } from '../../../both/collections/data-points.collection';
 import { CollectedData } from '../../../both/collections/collected-data.collection';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
-
+import { GroupFilter } from './group-filter.pipe';
 
 import template from './data-input-form.component.html';
 
 @Component({
     selector: 'data-input-form',
     template,
-    directives: [REACTIVE_FORM_DIRECTIVES]
+    directives: [REACTIVE_FORM_DIRECTIVES],
+    pipes: [GroupFilter]
 })
 
 export class DataInputForm extends MeteorComponent implements OnInit, OnChanges {
 
     @Input() curRecord: any;
     @Input() dataInputFields: any;
+    @Input() curDataGroup: any;
     collectedDataPoints: Object[] = [];
 
 
@@ -38,10 +40,10 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
     }
 
 
-    changeField(value, index) {
+    changeField(ref) {
     //     // console.log(this.dataPoints.length)
     //     this.collectedDataPoints[index]['processValue'] = value;
-    //     this.collectedDataPoints[index]['timestamp'] = new Date().toString();
+        ref['timestamp'] = new Date();
     //     // console.log(this.collectedDataPoints)
     //     this.updateRecord(this.collectedDataPoints);
     //     console.log(this.curRecord)

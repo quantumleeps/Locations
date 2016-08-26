@@ -69,7 +69,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.subscribe('data-points', () => {
                     this.dataPoints = DataPoints.find({ "locationId": this.curLocationId });
                     this.dataInputFields = this.createIterable(this.dataPoints, this.dataGroups);
-                    console.log(this.dataInputFields)
+                    // console.log(this.dataInputFields)
 
 
 
@@ -130,7 +130,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 units: item['units'],
                 dataGroupId: item['dataGroupId'], //can create function to display a dataGroupName with dataGroupId and use it here
                 processValue: "",
-                timestamp: "",
+                timestamp: undefined,
                 dataGroupName: ""
             }
             b.push(a)

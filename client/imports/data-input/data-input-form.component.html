@@ -27,18 +27,18 @@
         </div>
     </form>
 </div>-->
-
-<div *ngFor="let dataInputField of dataInputFields; let i = index">
+<div *ngFor="let dataInputField of dataInputFields | groupfilter:curDataGroup; let i = index">
     <div id="wrapper" class="container-fluid">
             <div id="description">
                 {{dataInputField.description}} - {{dataInputField.dataGroupName}}
             </div>
             <div class="input-group field-input">
                 <input #input class="form-control" id="value-input" type="number" 
-                (change)="changeField()"
+                (change)="changeField(dataInputField)"
                 [(ngModel)]="dataInputField.processValue">
                 <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
             </div>
+            {{dataInputField.timestamp | date:'mediumTime'}}
         </form>
     </div>
 </div>
