@@ -50,6 +50,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
         this.subscribe('collected-data-record', this.dataInputId, () => {
             this.curRecord = CollectedData.findOne(this.dataInputId);
             this.curLocationId = this.curRecord.locationId;
+            // console.log(this.curRecord)
 
             this.subscribe('location', this.curLocationId, () => {
                 this.curLocation = Locations.findOne(this.curLocationId);
