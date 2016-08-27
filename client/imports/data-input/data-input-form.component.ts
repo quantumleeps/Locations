@@ -38,7 +38,7 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
     changeField(ref) {
         ref['timestamp'] = new Date();
-        console.log(this.dataInputFields)
+        // console.log(this.dataInputFields)
         this.updateRecord(this.dataInputFields, this.curRecord)
     }
 

@@ -1,7 +1,7 @@
 <!--{{dataGroup.name}}-->
 <header *ngIf="location && dataGroup && !editing">
     <a [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name}}</a>
-    <h1>{{dataGroup.name}} - {{location.name}}</h1>
+    <br>{{dataGroup.name}} - {{location.name}}<br>
     <button (click)="editDataGroup()">Edit text</button>
 </header>
 

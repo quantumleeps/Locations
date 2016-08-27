@@ -12,7 +12,7 @@ Data Points:
 </div>
 
 <ul>
-    <li *ngFor="let dataPoint of dataPoints">
+    <li *ngFor="let dataPoint of dataPoints" class="listitem">
        
         <label><b>Description: </b></label>
         <span [hidden]="dataPoint.isEditingDescription">{{dataPoint.description}} <button (click)="dataPoint.isEditingDescription=true">edit</button></span>
@@ -41,14 +41,14 @@ Data Points:
 
         <!--{{dataPoint._id}}-->
 
-     <label><b>Meta tags</b>: </label>
+     <!--<label><b>Meta tags</b>: </label>
         <ul>
             <span *ngFor="let tag of dataPoint.metaTags; let i = index">
-                <li>{{i}} - {{tag}} <!--<button (click)="deleteTag(dataPoint,i)">Delete</button>--></li>
+                <li>{{i}} - {{tag}} </li>
             </span>
             <li><input type="text" [(ngModel)]="dataPoint.tagInput"><button (click)="addTag(dataPoint,dataPoint.tagInput)">Add Tag</button></li>
         </ul>
-        <br>
+        <br>-->
     </li>
 </ul>
 <!--{{curLocation}}-->

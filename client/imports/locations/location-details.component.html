@@ -1,9 +1,9 @@
 <header *ngIf="location && !editing">
     <a [routerLink]="['/configure']">Back to Locations</a>
-    <h1>{{location.name}}</h1>
-    <h2>{{location.shortName}}
-    <h2>{{location.region}}, {{location.country}}</h2>
-    <!--<h3>7.2 USMGD Seawater Reverse Osmosis Desalination facility</h3>-->
+    <br>
+    {{location.name}} - 
+    {{location.shortName}}<br>
+    {{location.region}}, {{location.country}}<br>
     <button (click)="editLocation()">Edit text</button>
 </header>
 
