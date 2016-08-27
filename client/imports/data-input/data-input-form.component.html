@@ -4,7 +4,7 @@
             {{dataInputField.description}} - {{dataInputField.dataGroupName}}
         </div>
         <div class="input-group field-input">
-            <input #input class="form-control" id="value-input" type="number" (change)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
+            <input #input class="form-control" id="value-input" type="number" (blur)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
             <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
         </div>
         <span id="databox" *ngIf="dataInputField.lowerLimit">Lower limit: {{dataInputField.lowerLimit}}</span> 
