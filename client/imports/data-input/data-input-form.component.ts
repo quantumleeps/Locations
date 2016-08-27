@@ -38,33 +38,18 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
     changeField(ref) {
         ref['timestamp'] = new Date();
-        // console.log(this.curRecord)
         console.log(this.dataInputFields)
         this.updateRecord(this.dataInputFields, this.curRecord)
     }
 
     // goal is to add the dataaray to the mongo record
     updateRecord(dataarray,record) {
-        // if(!this.curRecord.data) {
-        //     CollectedData.update({_id: record._id},{ $push: { data: { $each: dataarray }}})
-        //     console.log('nope, no curRecord.data')
-        // } else {
             CollectedData.update({_id: record._id},{ $set: { data: dataarray }} ) 
-        // }
+
     }
 
     isValid(datafieldvalue) {
 
-    // if(!value.processValue) {value.valid = false}
-    // else if(value.validRange == undefined || value.rangeOverride == true){value.valid = true}
-    // else {
-    //     if(value.processValue >= value.validRange[0] && value.processValue <= value.validRange[1]) {
-    //       value.valid = true
-    //     }
-    //     else {
-    //       value.valid = false
-    //     }
-    // }
         if (!datafieldvalue.processValue) { datafieldvalue.valid = false }
         else if (datafieldvalue.upperLimit && datafieldvalue.processValue > datafieldvalue.upperLimit) {
             datafieldvalue.valid=false;
