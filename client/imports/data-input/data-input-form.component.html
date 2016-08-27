@@ -1,15 +1,14 @@
 <div *ngFor="let dataInputField of dataInputFields | groupfilter:curDataGroup; let i = index">
     <div id="wrapper" class="container-fluid">
-            <div id="description">
-                {{dataInputField.description}} - {{dataInputField.dataGroupName}}
-            </div>
-            <div class="input-group field-input">
-                <input #input class="form-control" id="value-input" type="number" 
-                (change)="changeField(dataInputField)"
-                [(ngModel)]="dataInputField.processValue">
-                <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
-            </div>
-            {{dataInputField.timestamp | date:'mediumTime'}}
-        </form>
+        <div id="description">
+            {{dataInputField.description}} - {{dataInputField.dataGroupName}}
+        </div>
+        <div class="input-group field-input">
+            <input #input class="form-control" id="value-input" type="number" (change)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
+            <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
+        </div>
+        <span id="databox" *ngIf="dataInputField.lowerLimit">Lower limit: {{dataInputField.lowerLimit}}</span> 
+        <span id="databox" *ngIf="dataInputField.upperLimit">Upper limit: {{dataInputField.upperLimit}}</span>
+        <span id="databox" *ngIf="dataInputField.timestamp">{{dataInputField.timestamp | date:'mediumTime'}}</span>
     </div>
 </div>

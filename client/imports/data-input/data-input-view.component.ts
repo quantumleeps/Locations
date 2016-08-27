@@ -104,6 +104,8 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 description: item['description'],
                 units: item['units'],
                 dataGroupId: item['dataGroupId'],
+                upperLimit: item['upperLimit'],
+                lowerLimit: item['lowerLimit'],
                 processValue: "",
                 timestamp: undefined,
                 dataGroupName: ""
