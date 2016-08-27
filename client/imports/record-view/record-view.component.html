@@ -1,0 +1,12 @@
+<a class="navlink" [routerLink]="['']">Back to Homepage</a>
+
+<div *ngIf="curRecord">
+    Record Id: {{curRecord._id}}
+    <br> Location Id: {{curRecord.locationId}}
+    <ul>
+        <li *ngFor="let datapoint of curRecord.data">
+            {{datapoint.description}} - {{datapoint.processValue}} - {{datapoint.units}}
+            <br>{{datapoint.timestamp | date:'mediumTime' }}
+        </li>
+    </ul>
+</div>

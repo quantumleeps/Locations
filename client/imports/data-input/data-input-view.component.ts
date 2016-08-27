@@ -66,7 +66,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.subscribe('data-points', () => {
                     this.dataPoints = DataPoints.find({ "locationId": this.curLocationId });
                     this.dataInputFields = this.createIterable(this.dataPoints, this.dataGroups);
-                    
+
                 })
 
             })
@@ -103,7 +103,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 dataPointId: item['_id'],
                 description: item['description'],
                 units: item['units'],
-                dataGroupId: item['dataGroupId'], 
+                dataGroupId: item['dataGroupId'],
                 processValue: "",
                 timestamp: undefined,
                 dataGroupName: ""
@@ -111,9 +111,14 @@ export class DataInputView extends MeteorComponent implements OnInit {
             b.push(a)
         })
         for (var i = 0; i < b.length; i++) {
-            b[i]['dataGroupName'] = this.queryDataPointGroupName(b[i].dataGroupId, datagroups) 
+            b[i]['dataGroupName'] = this.queryDataPointGroupName(b[i].dataGroupId, datagroups)
         }
         return b
+    }
+
+    saveEntry() {
+        this.router.navigate(['/view', this.curRecord._id]);
+
     }
 }
 
