@@ -30,8 +30,6 @@ export class DataInputView extends MeteorComponent implements OnInit {
     dataPoints: any;
     dataGroups: any;
     curDataGroup: any;
-    dataPointsArray: any = [''];
-    // displayFields: any = [{}];
     dataInputFields: any
 
     constructor(private router: Router, private route: ActivatedRoute) {
@@ -52,7 +50,6 @@ export class DataInputView extends MeteorComponent implements OnInit {
         this.subscribe('collected-data-record', this.dataInputId, () => {
             this.curRecord = CollectedData.findOne(this.dataInputId);
             this.curLocationId = this.curRecord.locationId;
-            // console.log(this.curRecord)
 
             this.subscribe('location', this.curLocationId, () => {
                 this.curLocation = Locations.findOne(this.curLocationId);
@@ -69,28 +66,6 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.subscribe('data-points', () => {
                     this.dataPoints = DataPoints.find({ "locationId": this.curLocationId });
                     this.dataInputFields = this.createIterable(this.dataPoints, this.dataGroups);
-                    // console.log(this.dataInputFields)
-
-
-
-
-
-
-                    // // console.log(this.displayFields);
-                    // this.dataPointsArray = this.dataPoints.map(function (a) {
-                    //     return a;
-                    // });
-                    // for (var i = 0; i < this.dataPointsArray.length; i++) {
-                    //     var a = {
-                    //         description: this.dataPointsArray[i]['description'],
-                    //         units: this.dataPointsArray[i]['units'],
-                    //         processValue: "3",
-                    //         timestamp: ""
-                    //     }
-                    //     // this.displayFields.push(a)
-
-                    // }
-                    // // console.log(this.displayFields);
                     
                 })
 
@@ -128,7 +103,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 dataPointId: item['_id'],
                 description: item['description'],
                 units: item['units'],
-                dataGroupId: item['dataGroupId'], //can create function to display a dataGroupName with dataGroupId and use it here
+                dataGroupId: item['dataGroupId'], 
                 processValue: "",
                 timestamp: undefined,
                 dataGroupName: ""
@@ -140,6 +115,5 @@ export class DataInputView extends MeteorComponent implements OnInit {
         }
         return b
     }
-    // console.log(b)
 }
 

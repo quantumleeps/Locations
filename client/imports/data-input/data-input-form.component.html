@@ -1,32 +1,3 @@
-<!--<form [formGroup]="addDataForm" (ngSubmit)="addLocation()">
-    <label>Name</label>
-    <input type="text" formControlName="name">
-    <br>
-    <label>Short-name</label>
-    <input type="text" formControlName="shortName">
-    <br>
-    <label>Region</label>
-    <input type="text" formControlName="region">
-    <br>
-    <label>Country</label>
-    <input type="text" formControlName="country">
-    <br>
-    <button type="submit">Add Location</button>
-</form>-->
-
-
-<!--{{description}} -- {{units}}-->
-<!--<div id="wrapper" class="container-fluid">
-    <form [formGroup]="addDataForm">
-        <div id="description">
-            {{description}}
-        </div>
-        <div class="input-group field-input">
-            <input class="form-control" id="value-input" type="number" formControlName="processValue">
-            <div class="input-group-addon" id="units">{{units}}</div>
-        </div>
-    </form>
-</div>-->
 <div *ngFor="let dataInputField of dataInputFields | groupfilter:curDataGroup; let i = index">
     <div id="wrapper" class="container-fluid">
             <div id="description">
@@ -42,8 +13,3 @@
         </form>
     </div>
 </div>
-<!--
-<div *ngFor="let collectedDataPoint of collectedDataPoints">
-    {{collectedDataPoint.units}}
-</div>-->
-

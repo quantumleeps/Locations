@@ -19,17 +19,4 @@ export class GroupFilter {
        }
 
     }
-
-
-
-    // transform(inputarray, inputid) {
-    //     console.log(inputid)
-    //     var a = []
-    //     for (var i = 0; i < inputarray.length; i++) {
-    //         if (inputarray[i]['dataGroupId'] === inputid) {
-    //             a.push(inputarray[i]);
-    //         }
-    //     }
-    //     return a
-    // }
 }
