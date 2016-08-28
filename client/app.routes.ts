@@ -7,6 +7,7 @@ import { LocationSelect } from './imports/locations/location-select.component';
 import { DataGroupDetails } from './imports/data-groups/data-group-details.component';
 import { DataInputView } from './imports/data-input/data-input-view.component';
 import { RecordView } from './imports/record-view/record-view.component';
+import { Testing } from './imports/data-input/testing'
 
 const routes: RouterConfig = [
     { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: RouterConfig = [
     { path: 'configure', component: LocationsList },
     { path: 'configure/location/:locationId', component: LocationDetails },
     { path: 'configure/location/:locationId/data-group/:dataGroupId', component: DataGroupDetails },
-    { path: 'view/:dataInputId', component: RecordView }
+    { path: 'view/:dataInputId', component: RecordView },
+    { path: 'testing', component: Testing }
     ];
 
 export const APP_ROUTER_PROVIDERS = [

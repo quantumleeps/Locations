@@ -1,13 +1,25 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <span *ngFor="let dataGroup of dataGroups">
+            <button id="groupswitchbutton"
+            [class.btn-primary]="dataGroup._id === curDataGroup"
+            [class.btn-secondary]="dataGroup._id != curDataGroup"
+            class="btn btn-lg" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
+        </span>
+    </div>
+</nav>
 
-<button (click)="cancelEntry()">Cancel record</button>
-<button (click)="saveEntry()">Submit record</button>
-<br>
-<span *ngFor="let dataGroup of dataGroups">
-    <button [class.btn-success]="dataGroup._id === curDataGroup" class="btn"
-    (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
-</span>
-<br>
+
 Enter data for {{curLocationName}}:
 
 
 <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+                <button id="topbutton" class="btn btn-lg btn-info" (click)="cancelEntry()">Cancel record</button>
+        <button id="topbutton" class="btn btn-lg btn-info" (click)="saveEntry()">Submit record</button>
+        
+    </div>
+</nav>

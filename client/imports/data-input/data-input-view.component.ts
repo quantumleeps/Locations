@@ -106,7 +106,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 dataGroupId: item['dataGroupId'],
                 upperLimit: item['upperLimit'],
                 lowerLimit: item['lowerLimit'],
-                processValue: "",
+                processValue: undefined,
                 timestamp: undefined,
                 dataGroupName: ""
             }
@@ -124,3 +124,39 @@ export class DataInputView extends MeteorComponent implements OnInit {
     }
 }
 
+// call to query all of the data from a specific data point:
+
+// db['collected-data'].aggregate([
+//     { $unwind: "$data"}, {
+//         $match: {
+//             "data.processValue": {$exists: true},
+//             "data.dataPointId": "uf9mcSzQt46A7jKxm"
+//         }
+//     },{
+//         $project: {
+//             _id: 0, 
+//             "data.timestamp": 1, 
+//             "data.processValue": 1, 
+//             "data.description": 1, 
+//             "data.units": 1, 
+//             "data.dataPointId": 1
+//         }
+//     }]).pretty()
+
+
+// db['collected-data'].aggregate([
+//     { $unwind: "$data"}, {
+//         $match: {
+//             "data.processValue": {$exists: true},
+//             "_id": "AH8vdXysjJGqBsy4k"
+//         }
+//     },{
+//         $project: {
+//             _id: 0, 
+//             "data.timestamp": 1, 
+//             "data.processValue": 1, 
+//             "data.description": 1, 
+//             "data.units": 1, 
+//             "data.dataPointId": 1
+//         }
+//     }]).pretty()

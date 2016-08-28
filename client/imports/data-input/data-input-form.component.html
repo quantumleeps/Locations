@@ -4,11 +4,13 @@
             {{dataInputField.description}} - {{dataInputField.dataGroupName}}
         </div>
         <div class="input-group field-input">
+            <!--<span class="input-group-addon"></span>-->
             <input #input class="form-control" id="value-input" type="number" (blur)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
-            <div class="input-group-addon" id="units">{{dataInputField.units}}</div>
+            <span class="input-group-addon" id="units">{{dataInputField.units}}</span>
         </div>
-        <span id="databox" *ngIf="dataInputField.lowerLimit">Lower limit: {{dataInputField.lowerLimit}}</span> 
-        <span id="databox" *ngIf="dataInputField.upperLimit">Upper limit: {{dataInputField.upperLimit}}</span>
-        <span id="databox" *ngIf="dataInputField.timestamp">{{dataInputField.timestamp | date:'mediumTime'}}</span>
+        <span id="databox" *ngIf="dataInputField.lowerLimit"><b>Lower limit: {{dataInputField.lowerLimit}}</b></span> 
+        <span id="databox" *ngIf="dataInputField.upperLimit"><b>Upper limit: {{dataInputField.upperLimit}}</b></span>
+        <span id="databox" *ngIf="dataInputField.timestamp"><b>{{dataInputField.timestamp | date:'mediumTime'}}</b></span>
     </div>
 </div>
+
