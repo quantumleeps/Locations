@@ -39,11 +39,17 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
     changeField(ref) {
         ref['timestamp'] = new Date().toString();
         this.updateRecord(this.dataInputFields, this.curRecord)
+        if (ref['lowerLimit']) {
+            ref['isAboveLowerRange'] = this.isAboveLowerRange(ref['processValue'], ref['lowerLimit']);
+        } 
+        if (ref['upperLimit']) {
+            ref['isBelowUpperRange'] = this.isBelowUpperRange(ref['processValue'], ref['upperLimit']);
+        } 
     }
 
     // goal is to add the dataaray to the mongo record
-    updateRecord(dataarray,record) {
-            CollectedData.update({_id: record._id},{ $set: { data: dataarray }} ) 
+    updateRecord(dataarray, record) {
+        CollectedData.update({ _id: record._id }, { $set: { data: dataarray } })
 
     }
 
@@ -51,7 +57,23 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
         if (!datafieldvalue.processValue) { datafieldvalue.valid = false }
         else if (datafieldvalue.upperLimit && datafieldvalue.processValue > datafieldvalue.upperLimit) {
-            datafieldvalue.valid=false;
+            datafieldvalue.valid = false;
         }
-  }
+    }
+
+    isAboveLowerRange(val, lr) {
+        if (val >= lr) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isBelowUpperRange(val, ur) {
+        if (val >= ur) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

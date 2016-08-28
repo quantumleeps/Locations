@@ -1,16 +1,20 @@
 <div *ngFor="let dataInputField of dataInputFields | groupfilter:curDataGroup; let i = index">
-    <div id="wrapper" class="container-fluid">
+    <div id="datawrapper">
         <div id="description">
             {{dataInputField.description}} - {{dataInputField.dataGroupName}}
         </div>
         <div class="input-group field-input">
-            <!--<span class="input-group-addon"></span>-->
+            <!--<span *ngIf="dataInputField.processValue" class="input-group-addon"><span style="color: red; font-size: 30px" class="glyphicon glyphicon-arrow-up"></span></span>-->
             <input #input class="form-control" id="value-input" type="number" (blur)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
             <span class="input-group-addon" id="units">{{dataInputField.units}}</span>
         </div>
-        <span id="databox" *ngIf="dataInputField.lowerLimit"><b>Lower limit: {{dataInputField.lowerLimit}}</b></span> 
-        <span id="databox" *ngIf="dataInputField.upperLimit"><b>Upper limit: {{dataInputField.upperLimit}}</b></span>
-        <span id="databox" *ngIf="dataInputField.timestamp"><b>{{dataInputField.timestamp | date:'mediumTime'}}</b></span>
+        <h2>
+            <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue"><span [class.label-success]="dataInputField.processValue >= dataInputField.lowerLimit" [class.label-danger]="dataInputField.processValue < dataInputField.lowerLimit" class="label label-default"><span class="glyphicon glyphicon glyphicon-menu-right"></span>{{dataInputField.lowerLimit}}</span>
+            </span>
+            <span *ngIf="dataInputField.upperLimit && dataInputField.processValue"><span [class.label-success]="dataInputField.processValue <= dataInputField.upperLimit" [class.label-danger]="dataInputField.processValue > dataInputField.upperLimit" class="label label-default"><span class="glyphicon glyphicon-menu-left"></span>            {{dataInputField.upperLimit}}</span>
+            </span>
+            <span *ngIf="dataInputField.timestamp"><span class="label label-info"><span class="glyphicon glyphicon glyphicon-time"></span>            {{dataInputField.timestamp | date:'mediumTime'}}</span>
+            </span>
+        </h2>
     </div>
 </div>
-

@@ -1,25 +1,19 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+<div class="container-fluid" id="main-data-entry">
+    <span id="directions"> Enter data for {{curLocationName}}: </span>
+    <div class="container-fluid" id="buttonbar">
         <span *ngFor="let dataGroup of dataGroups">
             <button id="groupswitchbutton"
             [class.btn-primary]="dataGroup._id === curDataGroup"
-            [class.btn-secondary]="dataGroup._id != curDataGroup"
+            [class.btn-info]="dataGroup._id != curDataGroup"
             class="btn btn-lg" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
         </span>
     </div>
-</nav>
-
-
-Enter data for {{curLocationName}}:
-
-
-<data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
-
-
+    <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
+    <div id="spacer">&nbsp;</div>
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-                <button id="topbutton" class="btn btn-lg btn-info" (click)="cancelEntry()">Cancel record</button>
-        <button id="topbutton" class="btn btn-lg btn-info" (click)="saveEntry()">Submit record</button>
-        
+    <div class="container-fluid">
+        <button id="groupswitchbutton" class="btn btn-lg btn-info" (click)="cancelEntry()">Cancel record</button>
+        <button id="groupswitchbutton" class="btn btn-lg btn-info" (click)="saveEntry()">Submit record</button>
     </div>
 </nav>
