@@ -28,8 +28,8 @@ body {
 //     font-size: 100px
 // }
 #value-input {
-    height: 100px;
-    font-size: 70px;
+    height: 120px;
+    font-size: 90px;
 }
 #description {
     font-size: 50px;
@@ -90,4 +90,7 @@ body {
 }
 .success-range {
     background-color: green;
+}
+.data-point-label {
+    margin-right: 5px;
 }

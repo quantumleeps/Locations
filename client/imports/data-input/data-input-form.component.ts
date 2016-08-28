@@ -37,14 +37,19 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
 
     changeField(ref) {
-        ref['timestamp'] = new Date().toString();
-        this.updateRecord(this.dataInputFields, this.curRecord)
-        if (ref['lowerLimit']) {
-            ref['isAboveLowerRange'] = this.isAboveLowerRange(ref['processValue'], ref['lowerLimit']);
-        } 
-        if (ref['upperLimit']) {
-            ref['isBelowUpperRange'] = this.isBelowUpperRange(ref['processValue'], ref['upperLimit']);
-        } 
+        if (ref['processValue']) {
+            ref['timestamp'] = new Date().toString();
+            this.updateRecord(this.dataInputFields, this.curRecord);
+        } else if (ref['timestamp']) {
+            ref['timestamp'] = undefined;
+        }
+
+        // if (ref['lowerLimit']) {
+        //     ref['isAboveLowerRange'] = this.isAboveLowerRange(ref['processValue'], ref['lowerLimit']);
+        // } 
+        // if (ref['upperLimit']) {
+        //     ref['isBelowUpperRange'] = this.isBelowUpperRange(ref['processValue'], ref['upperLimit']);
+        // } 
     }
 
     // goal is to add the dataaray to the mongo record
@@ -61,19 +66,30 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
         }
     }
 
-    isAboveLowerRange(val, lr) {
-        if (val >= lr) {
+    // isAboveLowerRange(val, lr) {
+    //     if (val >= lr) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+
+
+isAboveLowerLimit(ref) {
+        if (ref['processValue'] >= ref['lowerLimit']) {
             return true;
         } else {
             return false;
         }
     }
 
-    isBelowUpperRange(val, ur) {
-        if (val >= ur) {
+    isBelowUpperLimit(ref) {
+        if (ref['processValue'] <= ref['upperLimit']) {
             return true;
         } else {
             return false;
         }
     }
+
 }

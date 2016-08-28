@@ -9,11 +9,13 @@
             <span class="input-group-addon" id="units">{{dataInputField.units}}</span>
         </div>
         <h2>
-            <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue"><span [class.label-success]="dataInputField.processValue >= dataInputField.lowerLimit" [class.label-danger]="dataInputField.processValue < dataInputField.lowerLimit" class="label label-default"><span class="glyphicon glyphicon glyphicon-menu-right"></span>{{dataInputField.lowerLimit}}</span>
+            <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue"><span [class.label-success]="isAboveLowerLimit(dataInputField)" [class.label-danger]="!isAboveLowerLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-right"></span>
+            {{dataInputField.lowerLimit}} <span *ngIf="isAboveLowerLimit(dataInputField)" class="glyphicon glyphicon-check"> </span> </span>
             </span>
-            <span *ngIf="dataInputField.upperLimit && dataInputField.processValue"><span [class.label-success]="dataInputField.processValue <= dataInputField.upperLimit" [class.label-danger]="dataInputField.processValue > dataInputField.upperLimit" class="label label-default"><span class="glyphicon glyphicon-menu-left"></span>            {{dataInputField.upperLimit}}</span>
+            <span *ngIf="dataInputField.upperLimit && dataInputField.processValue"><span [class.label-success]="isBelowUpperLimit(dataInputField)" [class.label-danger]="!isBelowUpperLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-left"></span>
+            {{dataInputField.upperLimit}} <span *ngIf="isBelowUpperLimit(dataInputField)" class="glyphicon glyphicon-check"> </span> </span>
             </span>
-            <span *ngIf="dataInputField.timestamp"><span class="label label-info"><span class="glyphicon glyphicon glyphicon-time"></span>            {{dataInputField.timestamp | date:'mediumTime'}}</span>
+            <span *ngIf="dataInputField.timestamp"><span class="data-point-label label label-info"><span class="glyphicon glyphicon glyphicon-time"></span>            {{dataInputField.timestamp | date:'mediumTime'}}</span>
             </span>
         </h2>
     </div>
