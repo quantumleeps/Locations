@@ -84,4 +84,13 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
         }
     }
 
+    onFocus(ref) {
+        // console.log('focused: ' + ref['description'])
+        ref['focused'] = true;
+    }
+
+    onBlur(ref) {
+        delete ref['focused']
+    }
+
 }

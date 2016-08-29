@@ -30,8 +30,10 @@ export class DataInputView extends MeteorComponent implements OnInit {
     dataPoints: any;
     dataGroups: any;
     curDataGroup: any;
+    curDataGroupName: any;
     dataInputFields: any
     expanded: boolean = false;
+    chooserActive: boolean = false;
 
     constructor(private router: Router, private route: ActivatedRoute) {
         super();
@@ -62,7 +64,8 @@ export class DataInputView extends MeteorComponent implements OnInit {
                 this.dataGroups = temp.map(function (a) {
                     return a
                 })
-                this.curDataGroup = this.dataGroups[0]._id
+                this.curDataGroup = this.dataGroups[0]._id;
+                this.curDataGroupName = this.dataGroups[0].name;
 
                 this.subscribe('data-points', () => {
                     this.dataPoints = DataPoints.find({ "locationId": this.curLocationId });
@@ -82,12 +85,12 @@ export class DataInputView extends MeteorComponent implements OnInit {
 
     changeCurGroup(id) {
         this.curDataGroup = id;
-
+        this.curDataGroupName = this.queryDataPointGroupName(id,this.dataGroups)
         this.subscribe('data-points', () => {
             this.dataPoints = DataPoints.find({ "locationId": this.curLocationId, "dataGroupId": this.curDataGroup })
         })
 
-        this.expanded = false;
+        this.chooserActive = false;
 
     }
 
@@ -103,6 +106,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
         var b = [];
         cursor.forEach(function (item) {
             var a = {
+                focused: false,
                 dataPointId: item['_id'],
                 description: item['description'],
                 units: item['units'],
@@ -129,7 +133,13 @@ export class DataInputView extends MeteorComponent implements OnInit {
     toggleExpanded() {
         if (this.expanded === false) {
             this.expanded = true;
-        } else this.expanded = false;
+        } else {this.expanded = false};
+    }
+
+    toggleChooser() {
+        if (this.chooserActive === false) {
+            this.chooserActive = true;
+        } else {this.chooserActive = false}
     }
 }
 

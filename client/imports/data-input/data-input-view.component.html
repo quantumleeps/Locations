@@ -1,15 +1,21 @@
-<div class="container-fluid" id="main-data-entry">
-    <div class="container-fluid">
-        <!--<div id="group-nav'btn" class="row">
-            <div class="col-xs-6">
-                <span id="group-left-btn" class="btn btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span>Previous</span>
-            </div>
-            <div class="col-xs-6" style="text-align: right">
-                <span  id="group-right-btn" class="btn btn-info">Next <span class="glyphicon glyphicon-circle-arrow-right"></span></span>
-            </div>
-        </div>-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <span style="font-size: 50px; text-align: center; margin-left: 10px;"><b>{{curLocationName}} </b>
+    <button style="font-size: 40px!important; margin-left: 10px; margin-bottom: 4px" *ngIf="!chooserActive" (click)="toggleChooser()" class="btn btn-success"><span class="glyphicon glyphicon-chevron-down"></span> {{curDataGroupName}}</button>
+    </span>
+    <div *ngIf="chooserActive" class="container-fluid">
+        <span *ngFor="let dataGroup of dataGroups">
+            <button
+            [class.btn-success]="dataGroup._id === curDataGroup"
+            [class.btn-info]="dataGroup._id != curDataGroup"
+            class="btn groupswitchbutton-expanded" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}} <span *ngIf="dataGroup._id === curDataGroup">&#10004;</span></button>
+        </span>
     </div>
-    <div class="container-fluid" [class.buttonbar]="!expanded" [class.buttonbar-expanded]="expanded">
+</nav>
+<div class="container-fluid" id="main-data-entry">
+    <div style="margin-top: 60px">&nbsp;
+    </div>
+
+    <!--<div class="container-fluid" [class.buttonbar]="!expanded" [class.buttonbar-expanded]="expanded">
         <span *ngFor="let dataGroup of dataGroups">
             <button [class.groupswitchbutton]="!expanded" [class.groupswitchbutton-expanded]="expanded"
             [class.btn-primary]="dataGroup._id === curDataGroup"
@@ -17,11 +23,11 @@
             class="btn" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
         </span>
         
-    </div>
-    <div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default">Expand</div>
+    </div>-->
+    <!--<div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default">Expand</div>
     <div id="expand-button" *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default">Collapse</div>
     <br>
-    <span id="directions">Enter data for {{curLocationName}}: </span>
+    <span id="directions">Enter data for {{curLocationName}}: </span>-->
 
     <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
     <div id="spacer">&nbsp;</div>

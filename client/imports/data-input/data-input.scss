@@ -50,7 +50,6 @@ body {
 }
 #datawrapper {
     width: 97%;
-    border-top: 2px solid black;
     padding: 17px;
 }
 #databox {
@@ -115,4 +114,8 @@ body {
     margin-top: 30px;
     margin-left: 5px;
     margin-bottom: 30px;
+}
+.change-border {
+     border: 6px dotted green;
+     border-radius: 10px;
 }

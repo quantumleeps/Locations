@@ -1,19 +1,19 @@
 <div *ngFor="let dataInputField of dataInputFields | groupfilter:curDataGroup; let i = index">
-    <div id="datawrapper">
+    <div id="datawrapper" [class.change-border]="dataInputField['focused']">
         <div id="description">
-            {{dataInputField.description}} - {{dataInputField.dataGroupName}}
+            {{dataInputField.description}}
         </div>
         <div class="input-group field-input">
-            <!--<span *ngIf="dataInputField.processValue" class="input-group-addon"><span style="color: red; font-size: 30px" class="glyphicon glyphicon-arrow-up"></span></span>-->
-            <input #input class="form-control" id="value-input" type="number" (ngModelChange)="changeField(dataInputField)" [(ngModel)]="dataInputField.processValue">
+            <span *ngIf="dataInputField.processValue" class="input-group-addon"><span style="color: green; font-size: 60px">&#10004;</span></span>
+            <input #input class="form-control" id="value-input" type="number" (ngModelChange)="changeField(dataInputField)" (focus)="onFocus(dataInputField)" (blur)="onBlur(dataInputField)" [(ngModel)]="dataInputField.processValue">
             <span class="input-group-addon" id="units">{{dataInputField.units}}</span>
         </div>
         <h2>
             <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue"><span [class.label-success]="isAboveLowerLimit(dataInputField)" [class.label-danger]="!isAboveLowerLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-right"></span>
-            {{dataInputField.lowerLimit}} <span *ngIf="isAboveLowerLimit(dataInputField)" class="glyphicon glyphicon-check"> </span> </span>
+            {{dataInputField.lowerLimit}} <span *ngIf="isAboveLowerLimit(dataInputField)"> &#10004;</span> </span>
             </span>
             <span *ngIf="dataInputField.upperLimit && dataInputField.processValue"><span [class.label-success]="isBelowUpperLimit(dataInputField)" [class.label-danger]="!isBelowUpperLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-left"></span>
-            {{dataInputField.upperLimit}} <span *ngIf="isBelowUpperLimit(dataInputField)" class="glyphicon glyphicon-check"> </span> </span>
+            {{dataInputField.upperLimit}} <span *ngIf="isBelowUpperLimit(dataInputField)"> &#10004;</span> </span>
             </span>
             <span *ngIf="dataInputField.timestamp && dataInputField.processValue != undefined"><span class="data-point-label label label-info"><span class="glyphicon glyphicon glyphicon-time"></span>            {{dataInputField.timestamp | date:'mediumTime'}}</span>
             </span>

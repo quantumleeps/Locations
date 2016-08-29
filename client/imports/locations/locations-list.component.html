@@ -1,7 +1,7 @@
 <a class="navlink" [routerLink]="['']">Back to Homepage</a>
 <br>
 
-<div class="container">
+<div class="container-fluid" style="width: 94%">
   Add a new location:
   <div id="form-wrapper"><locations-form></locations-form></div>
   
@@ -12,5 +12,6 @@
     <div>
       {{location.region}}, {{location.country}}
     </div>
+    <button (click)="deleteLocation(location)" class="btn btn-default">Delete Location</button>
   </div>
 </div>

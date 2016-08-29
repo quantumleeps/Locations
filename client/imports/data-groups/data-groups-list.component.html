@@ -4,8 +4,16 @@ Add a new data group:
 </div>
 <br>
 <span class="details-info">Data Groups: </span>
-<ul id="data-group-list">
-  <li *ngFor="let dataGroup of dataGroups">
-    <span><a [routerLink]="['data-group/', dataGroup._id ]">{{dataGroup.name}}</a></span>
-</li>
-</ul>
+    <div id="data-group-list" class="row"  *ngFor="let dataGroup of dataGroups">
+      <div class="col-xs-6">
+        <span><a [routerLink]="['data-group/', dataGroup._id ]">{{dataGroup.name}}</a></span>
+
+      </div>
+      <div class="col-xs-6">
+        <button (click)="deleteGroup(dataGroup)" class="btn btn-default">Delete</button>
+        <button [disabled]="true" class="btn btn-default">Move Up</button>
+        <button [disabled]="true" class="btn btn-default">Move down</button>
+        <button (click)="duplicateGroup(dataGroup)" class="btn btn-default">Duplicate</button>
+      </div>
+    </div>
+

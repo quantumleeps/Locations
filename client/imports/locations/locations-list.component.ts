@@ -54,7 +54,7 @@ export class LocationsList extends MeteorComponent implements OnInit {
         } else {this.locationAddToggled = true;}
     }
 
-    removeLocation (current) {
+    deleteLocation (current) {
         Locations.remove(current._id);
     }
 }
