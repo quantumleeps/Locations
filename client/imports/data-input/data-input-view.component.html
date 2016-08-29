@@ -18,8 +18,8 @@
         </span>
         
     </div>
-    <div *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Expand</div>
-    <div *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Collapse</div>
+    <div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Expand</div>
+    <div id="expand-button" *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Collapse</div>
     <br>
     <span id="directions">{{curLocationName}} data: </span>
 
