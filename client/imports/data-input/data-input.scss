@@ -64,15 +64,28 @@ body {
 #data-field {
     border: 1px solid black;
 }
-#groupswitchbutton {
-    margin: 8px; 
-    padding: 8px;
+.groupswitchbutton {
+    // margin: 3px; 
+    // padding: 3px;
+    font-size: 20px;
+    display:inline-block;
+}
+.groupswitchbutton-expanded {
+    margin: 4px; 
+    padding: 4px;
     font-size: 60px;
     display:inline-block;
 }
-#buttonbar {
+.buttonbar {
     overflow-x: auto;
     white-space: nowrap;
+    // border-top: 2px solid black;
+    // margin-top: 8px;
+    // margin-bottom: 10px;
+    text-align: center;
+    font-size: 60px;
+}
+.buttonbar-expanded {
     // border-top: 2px solid black;
     margin-top: 8px;
     margin-bottom: 10px;

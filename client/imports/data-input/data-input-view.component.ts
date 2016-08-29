@@ -31,6 +31,7 @@ export class DataInputView extends MeteorComponent implements OnInit {
     dataGroups: any;
     curDataGroup: any;
     dataInputFields: any
+    expanded: boolean = false;
 
     constructor(private router: Router, private route: ActivatedRoute) {
         super();
@@ -86,6 +87,8 @@ export class DataInputView extends MeteorComponent implements OnInit {
             this.dataPoints = DataPoints.find({ "locationId": this.curLocationId, "dataGroupId": this.curDataGroup })
         })
 
+        this.expanded = false;
+
     }
 
     queryDataPointGroupName(datagroupid, datagroups) {
@@ -121,6 +124,12 @@ export class DataInputView extends MeteorComponent implements OnInit {
     saveEntry() {
         this.router.navigate(['/view', this.curRecord._id]);
 
+    }
+
+    toggleExpanded() {
+        if (this.expanded === false) {
+            this.expanded = true;
+        } else this.expanded = false;
     }
 }
 
