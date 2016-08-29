@@ -1,14 +1,12 @@
 <a class="navlink" [routerLink]="['']">Back to Homepage</a>
-<br><span class="page-title">Locations:</span>
+<br>
 
 <div class="container">
-
-  <button (click)="changeAdderToggle()" [hidden]="locationAddToggled">Add Location</button>
-  <button (click)="changeAdderToggle()" [hidden]="!locationAddToggled">Hide Add Location Form</button>
-
-  <div [hidden]=" !locationAddToggled ">
-    <locations-form></locations-form>
-  </div>
+  Add a new location:
+  <div id="form-wrapper"><locations-form></locations-form></div>
+  
+  <span class="details-info">Locations:</span>
+  <br>
   <div class="location-block" *ngFor="let location of locations ">
     <span><b><a [routerLink]="[ 'location', location._id] ">{{location.name}}</a></b> ({{location.shortName}})</span>
     <div>

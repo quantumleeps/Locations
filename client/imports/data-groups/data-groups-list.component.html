@@ -1,15 +1,11 @@
-Data Groups:
-<br>
-<button (click)="changeAdderToggle()" [hidden]="dataGroupAddToggled">Add Data Group</button>
-<button (click)="changeAdderToggle()" [hidden]="!dataGroupAddToggled">Hide Add Data Group Form</button>
-
-<div [hidden]="!dataGroupAddToggled">
-  <hr>
+Add a new data group:
+<div id="form-wrapper">
   <data-groups-form [curLocation]="curLocation"></data-groups-form>
-  <hr>
 </div>
-<ul>
+<br>
+<span class="details-info">Data Groups: </span>
+<ul id="data-group-list">
   <li *ngFor="let dataGroup of dataGroups">
     <span><a [routerLink]="['data-group/', dataGroup._id ]">{{dataGroup.name}}</a></span>
-  </li>
+</li>
 </ul>

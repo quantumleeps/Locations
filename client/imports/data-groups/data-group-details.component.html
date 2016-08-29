@@ -1,19 +1,30 @@
 <!--{{dataGroup.name}}-->
-<header *ngIf="location && dataGroup && !editing">
-    <a [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name}}</a>
-    <br>{{dataGroup.name}} - {{location.name}}<br>
-    <button (click)="editDataGroup()">Edit text</button>
-</header>
 
-<form *ngIf="dataGroup && editing" (submit)="saveDataGroup()">
-    <label>Name</label>
-    <input type="text" [(ngModel)]="dataGroup.name" name="name">
+<div class="container-fluid" style="width: 94%">
+
+    <header *ngIf="location && dataGroup && !editing">
+            <a class="navlink" [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name}}</a>
+
+        <span class="details-info">
+            <br>{{dataGroup.name}} - {{location.name}}<br>
+            <button class="btn btn-default" (click)="editDataGroup()">Edit text</button>
+        </span>
+    </header>
+
+    <form *ngIf="dataGroup && editing" (submit)="saveDataGroup()">
+            <a class="navlink" [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name}}</a>
+
+        <span class="details-info">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="dataGroup.name" name="name">
+            <br>
+            <button class="btn btn-default" type="submit">Save</button>
+        </span>
+    </form>
     <br>
-    <button type="submit">Save</button>
-</form>
-<br>
 
 
-<data-points-list [curLocation]="locationId" [curDataGroup]="dataGroupId"></data-points-list>
+    <data-points-list [curLocation]="locationId" [curDataGroup]="dataGroupId"></data-points-list>
 
-<!--[curLocation]="locationId" [curDataGroup]="dataGroupId"-->
+    <!--[curLocation]="locationId" [curDataGroup]="dataGroupId"-->
+</div>

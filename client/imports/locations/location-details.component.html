@@ -1,26 +1,30 @@
-<header *ngIf="location && !editing">
-    <a [routerLink]="['/configure']">Back to Locations</a>
-    <br>
-    {{location.name}} - 
-    {{location.shortName}}<br>
-    {{location.region}}, {{location.country}}<br>
-    <button (click)="editLocation()">Edit text</button>
-</header>
+<div class="container-fluid" style="width: 94%">
+<a class="navlink" [routerLink]="['/configure']">Back to Locations</a>
 
-<form *ngIf="location && editing" (submit)="saveLocation()">
-    <label>Name</label>
-    <input type="text" [(ngModel)]="location.name" name="name">
+    <header *ngIf="location && !editing">
+        <br>
+        <span class="details-info">
+         {{location.name}} - {{location.shortName}}
+         <br>{{location.region}}, {{location.country}}<br>
+        <button class="btn btn-default" (click)="editLocation()">Edit text</button>
+    </span>
+    </header>
+
+    <form class="details-info" *ngIf="location && editing" (submit)="saveLocation()">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="location.name" name="name">
+        <br>
+        <label>Short name</label>
+        <input type="text" [(ngModel)]="location.shortName" name="shortName">
+        <br>
+        <label>Region</label>
+        <input type="text" [(ngModel)]="location.region" name="region">
+        <br>
+        <label>Country</label>
+        <input type="text" [(ngModel)]="location.country" name="country">
+        <br>
+        <button class="btn btn-default" type="submit">Save</button>
+    </form>
     <br>
-    <label>Short name</label>
-    <input type="text" [(ngModel)]="location.shortName" name="shortName">
-    <br>
-    <label>Region</label>
-    <input type="text" [(ngModel)]="location.region" name="region">
-    <br>
-    <label>Country</label>
-    <input type="text" [(ngModel)]="location.country" name="country">
-    <br>    
-    <button type="submit">Save</button>
-</form>
-<br>
-<data-groups-list [curLocation]="locationId"></data-groups-list>
+    <data-groups-list [curLocation]="locationId"></data-groups-list>
+</div>

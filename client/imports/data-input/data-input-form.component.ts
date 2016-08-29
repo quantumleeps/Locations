@@ -21,6 +21,7 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
     @Input() dataInputFields: any;
     @Input() curDataGroup: any;
     collectedDataPoints: Object[] = [];
+    modifiedInputFields: any;
 
 
     constructor() {
@@ -37,46 +38,37 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
 
     changeField(ref) {
-        if (ref['processValue']) {
-            ref['timestamp'] = new Date().toString();
-            this.updateRecord(this.dataInputFields, this.curRecord);
-        } else if (ref['timestamp']) {
-            ref['timestamp'] = undefined;
-        }
 
-        // if (ref['lowerLimit']) {
-        //     ref['isAboveLowerRange'] = this.isAboveLowerRange(ref['processValue'], ref['lowerLimit']);
-        // } 
-        // if (ref['upperLimit']) {
-        //     ref['isBelowUpperRange'] = this.isBelowUpperRange(ref['processValue'], ref['upperLimit']);
-        // } 
+
+        this.modifiedInputFields = [];
+        for (var i = 0; i < this.dataInputFields.length; i++) {
+            if (this.dataInputFields[i]['processValue'] != undefined) {
+                this.dataInputFields[i]['timestamp'] = new Date().toString();
+                this.modifiedInputFields.push({
+                    dataPointId: this.dataInputFields[i]['dataPointId'],
+                    description: this.dataInputFields[i]['description'],
+                    units: this.dataInputFields[i]['units'],
+                    processValue: this.dataInputFields[i]['processValue'],
+                    timestamp: this.dataInputFields[i]['timestamp']
+
+                })
+            }
+        }
+        this.updateRecord(this.modifiedInputFields, this.curRecord);
     }
 
-    // goal is to add the dataaray to the mongo record
+    // add the dataaray to the mongo record
     updateRecord(dataarray, record) {
         CollectedData.update({ _id: record._id }, { $set: { data: dataarray } })
+    }
+
+    isValid(ref) {
+
 
     }
 
-    isValid(datafieldvalue) {
 
-        if (!datafieldvalue.processValue) { datafieldvalue.valid = false }
-        else if (datafieldvalue.upperLimit && datafieldvalue.processValue > datafieldvalue.upperLimit) {
-            datafieldvalue.valid = false;
-        }
-    }
-
-    // isAboveLowerRange(val, lr) {
-    //     if (val >= lr) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-
-
-isAboveLowerLimit(ref) {
+    isAboveLowerLimit(ref) {
         if (ref['processValue'] >= ref['lowerLimit']) {
             return true;
         } else {

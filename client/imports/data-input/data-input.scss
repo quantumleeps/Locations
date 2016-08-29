@@ -65,14 +65,14 @@ body {
     border: 1px solid black;
 }
 #groupswitchbutton {
-    margin: 10px; 
-    padding: 4px;
-    font-size: 50px;
+    margin: 8px; 
+    padding: 8px;
+    font-size: 60px;
     display:inline-block;
 }
 #buttonbar {
-    // overflow-x: auto;
-    // white-space: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
     // border-top: 2px solid black;
     margin-top: 8px;
     margin-bottom: 10px;
@@ -83,6 +83,7 @@ body {
 }
 #main-data-entry {
     width: 97%;
+    margin-top: 15px;
 }
 #directions {
     font-size: 60px;
@@ -93,4 +94,13 @@ body {
 }
 .data-point-label {
     margin-right: 5px;
+}
+#group-left-btn, #group-right-btn {
+    font-size:50px;
+}
+#group-left-label {
+    margin-left: 20px;
+}
+#group-nav-btn {
+    text-align: center;
 }

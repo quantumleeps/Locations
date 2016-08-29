@@ -1,47 +1,88 @@
-Data Points:
 
-<br>
-<button (click)="changeAdderToggle()" [hidden]="dataPointAddToggled">Add Data Point</button>
-<button (click)="changeAdderToggle()" [hidden]="!dataPointAddToggled">Hide Add Data Point Form</button>
+    Add a data point:
+
+    <div id="form-wrapper">
+        <data-points-form [curLocation]="curLocation" [curDataGroup]="curDataGroup"></data-groups-form>
+    </div>
 
 
-<div [hidden]="!dataPointAddToggled">
-    <hr>
-    <data-points-form [curLocation]="curLocation" [curDataGroup]="curDataGroup"></data-groups-form>
-        <hr>
-</div>
+    <span class="details-info">Data Points: </span>
+    <div *ngFor="let dataPoint of dataPoints" class="listitem">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Description: </b></label>
+                    <span [hidden]="dataPoint.isEditingDescription">{{dataPoint.description}}</span>
+                    <span [hidden]="!dataPoint.isEditingDescription"><input type="text" [(ngModel)]="dataPoint.description">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingDescription"><button class="btn btn-default" (click)="dataPoint.isEditingDescription=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingDescription">
+        <button class="btn btn-default" (click)="saveDescription(dataPoint)">Save</button></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Units: </b></label>
+                    <span [hidden]="dataPoint.isEditingUnits">{{dataPoint.units}}</span>
+                    <span [hidden]="!dataPoint.isEditingUnits"><input type="text" [(ngModel)]="dataPoint.units">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingUnits"><button class="btn btn-default" (click)="dataPoint.isEditingUnits=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingUnits">
+        <button class="btn btn-default" (click)="saveUnits(dataPoint)">Save</button></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Lower alarm limit: </b></label>
+                    <span [hidden]="dataPoint.isEditingLL">{{dataPoint.lowerLimit}}</span>
+                    <span [hidden]="!dataPoint.isEditingLL"><input type="text" [(ngModel)]="dataPoint.lowerLimit">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingLL"><button class="btn btn-default" (click)="dataPoint.isEditingLL=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingLL">
+        <button class="btn btn-default" (click)="saveLowerLimit(dataPoint)">Save</button></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Upper alarm limit: </b></label>
+                    <span [hidden]="dataPoint.isEditingUL">{{dataPoint.upperLimit}}</span>
+                    <span [hidden]="!dataPoint.isEditingUL"><input type="text" [(ngModel)]="dataPoint.upperLimit">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingUL"><button class="btn btn-default" (click)="dataPoint.isEditingUL=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingUL">
+        <button class="btn btn-default" (click)="saveUpperLimit(dataPoint)">Save</button></span>
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-xs-6">
 
-<ul>
-    <li *ngFor="let dataPoint of dataPoints" class="listitem">
-       
-        <label><b>Description: </b></label>
-        <span [hidden]="dataPoint.isEditingDescription">{{dataPoint.description}} <button (click)="dataPoint.isEditingDescription=true">edit</button></span>
-        <span [hidden]="!dataPoint.isEditingDescription"><input type="text" [(ngModel)]="dataPoint.description">
-        <button (click)="saveDescription(dataPoint)">Save</button></span><br>
-
-        <label><b>Units: </b></label>
-        <span [hidden]="dataPoint.isEditingUnits">{{dataPoint.units}} <button (click)="dataPoint.isEditingUnits=true">edit</button></span>
-        <span [hidden]="!dataPoint.isEditingUnits"><input type="text" [(ngModel)]="dataPoint.units">
-        <button (click)="saveUnits(dataPoint)">Save</button></span><br>
-
-        <label><b>Lower alarm limit: </b></label>
-        <span [hidden]="dataPoint.isEditingLL">{{dataPoint.lowerLimit}} <button (click)="dataPoint.isEditingLL=true">edit</button></span>
-        <span [hidden]="!dataPoint.isEditingLL"><input type="text" [(ngModel)]="dataPoint.lowerLimit">
-        <button (click)="saveLowerLimit(dataPoint)">Save</button></span><br>
-
-        <label><b>Upper alarm limit: </b></label>
-        <span [hidden]="dataPoint.isEditingUL">{{dataPoint.upperLimit}} <button (click)="dataPoint.isEditingUL=true">edit</button></span>
-        <span [hidden]="!dataPoint.isEditingUL"><input type="text" [(ngModel)]="dataPoint.upperLimit">
-        <button (click)="saveUpperLimit(dataPoint)">Save</button></span><br>
-
-        <label><b>Process tag: </b></label>
-        <span [hidden]="dataPoint.isEditingPT">{{dataPoint.processTag}} <button (click)="dataPoint.isEditingPT=true">edit</button></span>
-        <span [hidden]="!dataPoint.isEditingPT"><input type="text" [(ngModel)]="dataPoint.processTag">
+                    <label><b>Process tag: </b></label>
+                    <span [hidden]="dataPoint.isEditingPT">{{dataPoint.processTag}} <button (click)="dataPoint.isEditingPT=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingPT"><input type="text" [(ngModel)]="dataPoint.processTag">
         <button (click)="saveProcessTag(dataPoint)">Save</button></span><br>
+                </div>
+                <div class="col-xs-6">
+                    <span>Row 5 Right</span>
+                </div>
+            </div>-->
+        </div>
+    </div>
 
-        <!--{{dataPoint._id}}-->
 
-     <!--<label><b>Meta tags</b>: </label>
+
+
+
+
+
+
+
+    <!--{{dataPoint._id}}-->
+
+    <!--<label><b>Meta tags</b>: </label>
         <ul>
             <span *ngFor="let tag of dataPoint.metaTags; let i = index">
                 <li>{{i}} - {{tag}} </li>
@@ -49,6 +90,6 @@ Data Points:
             <li><input type="text" [(ngModel)]="dataPoint.tagInput"><button (click)="addTag(dataPoint,dataPoint.tagInput)">Add Tag</button></li>
         </ul>
         <br>-->
-    </li>
-</ul>
-<!--{{curLocation}}-->
+
+
+    <!--{{curLocation}}-->
