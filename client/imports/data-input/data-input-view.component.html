@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <span style="font-size: 50px; text-align: center; margin-left: 10px;"><b>{{curLocationName}} </b>
-    <button style="font-size: 40px!important; margin-left: 10px; margin-bottom: 4px" *ngIf="!chooserActive" (click)="toggleChooser()" class="btn btn-success"><span class="glyphicon glyphicon-chevron-down"></span> {{curDataGroupName}}</button>
+    <button style="font-size: 40px!important; margin-left: 10px; margin-bottom: 4px" *ngIf="!chooserActive" (click)="toggleChooser()" class="btn btn-success">{{curDataGroupName}} <span class="glyphicon glyphicon-chevron-down"></span></button>
     </span>
     <div *ngIf="chooserActive" class="container-fluid">
         <span *ngFor="let dataGroup of dataGroups">

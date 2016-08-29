@@ -69,19 +69,25 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
 
     isAboveLowerLimit(ref) {
-        if (ref['processValue'] >= ref['lowerLimit']) {
-            return true;
-        } else {
-            return false;
-        }
+        if (ref['lowerLimit']) {
+            if (ref['processValue'] >= ref['lowerLimit']) {
+                return true;
+            } else {
+                return false;
+            }
+        } else { return true; }
+
     }
 
     isBelowUpperLimit(ref) {
-        if (ref['processValue'] <= ref['upperLimit']) {
-            return true;
-        } else {
-            return false;
-        }
+        if (ref['upperLimit']) {
+            if (ref['processValue'] <= ref['upperLimit']) {
+                return true;
+            } else {
+                return false;
+            }
+        } else { return true; }
+
     }
 
     onFocus(ref) {

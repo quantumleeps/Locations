@@ -24,7 +24,8 @@ export class DataPointsForm implements OnInit {
             description: ['', Validators.required],
             units: ['', Validators.required],
             lowerLimit: [''],
-            upperLimit: ['']
+            upperLimit: [''],
+            required: ['false']
         });
     }
 
@@ -33,6 +34,7 @@ export class DataPointsForm implements OnInit {
         this.addDataPointForm.controls['units']['updateValue']('');
         this.addDataPointForm.controls['lowerLimit']['updateValue']('');
         this.addDataPointForm.controls['upperLimit']['updateValue']('');
+        this.addDataPointForm.controls['required']['updateValue']('false')
     }
 
     addDataPoint() {

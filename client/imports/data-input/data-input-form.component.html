@@ -4,16 +4,19 @@
             {{dataInputField.description}}
         </div>
         <div class="input-group field-input">
-            <span *ngIf="dataInputField.processValue" class="input-group-addon"><span style="color: green; font-size: 60px">&#10004;</span></span>
-            <input #input class="form-control" id="value-input" type="number" (ngModelChange)="changeField(dataInputField)" (focus)="onFocus(dataInputField)" (blur)="onBlur(dataInputField)" [(ngModel)]="dataInputField.processValue">
+            <span *ngIf="dataInputField.processValue != undefined && isAboveLowerLimit(dataInputField) && isBelowUpperLimit(dataInputField)"
+                class="input-group-addon"><span style="color: #5cb85c; font-size: 60px">&#10004;</span></span>
+            <span *ngIf="(dataInputField.processValue || dataInputField.processValue === 0) && (!isAboveLowerLimit(dataInputField) || !isBelowUpperLimit(dataInputField))"
+                class="input-group-addon"><span style="color: #d9534f; font-size: 60px">&#10008;</span></span>
+
+            <input #input class="form-control" id="value-input" type="number" (ngModelChange)="changeField(dataInputField)" (focus)="onFocus(dataInputField)"
+                (blur)="onBlur(dataInputField)" [(ngModel)]="dataInputField.processValue">
             <span class="input-group-addon" id="units">{{dataInputField.units}}</span>
         </div>
         <h2>
-            <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue"><span [class.label-success]="isAboveLowerLimit(dataInputField)" [class.label-danger]="!isAboveLowerLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-right"></span>
-            {{dataInputField.lowerLimit}} <span *ngIf="isAboveLowerLimit(dataInputField)"> &#10004;</span> </span>
+            <span *ngIf="dataInputField.lowerLimit && dataInputField.processValue != undefined"><span [class.label-success]="isAboveLowerLimit(dataInputField)" [class.label-danger]="!isAboveLowerLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-right"></span>            {{dataInputField.lowerLimit}} <span *ngIf="isAboveLowerLimit(dataInputField)"> &#10004;</span><span *ngIf="!isAboveLowerLimit(dataInputField)"> &#10008;</span> </span>
             </span>
-            <span *ngIf="dataInputField.upperLimit && dataInputField.processValue"><span [class.label-success]="isBelowUpperLimit(dataInputField)" [class.label-danger]="!isBelowUpperLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-left"></span>
-            {{dataInputField.upperLimit}} <span *ngIf="isBelowUpperLimit(dataInputField)"> &#10004;</span> </span>
+            <span *ngIf="dataInputField.upperLimit && dataInputField.processValue != undefined"><span [class.label-success]="isBelowUpperLimit(dataInputField)" [class.label-danger]="!isBelowUpperLimit(dataInputField)" class="data-point-label label label-default"><span class="glyphicon glyphicon-menu-left"></span>            {{dataInputField.upperLimit}} <span *ngIf="isBelowUpperLimit(dataInputField)"> &#10004;</span><span *ngIf="!isBelowUpperLimit(dataInputField)"> &#10008;</span> </span>
             </span>
             <span *ngIf="dataInputField.timestamp && dataInputField.processValue != undefined"><span class="data-point-label label label-info"><span class="glyphicon glyphicon glyphicon-time"></span>            {{dataInputField.timestamp | date:'mediumTime'}}</span>
             </span>
