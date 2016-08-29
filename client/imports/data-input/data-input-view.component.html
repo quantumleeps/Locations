@@ -14,14 +14,14 @@
             <button [class.groupswitchbutton]="!expanded" [class.groupswitchbutton-expanded]="expanded"
             [class.btn-primary]="dataGroup._id === curDataGroup"
             [class.btn-info]="dataGroup._id != curDataGroup"
-            class="btn btn-lg" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
+            class="btn" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
         </span>
         
     </div>
-    <div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Expand</div>
-    <div id="expand-button" *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default btn-lg">Collapse</div>
+    <div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default">Expand</div>
+    <div id="expand-button" *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default">Collapse</div>
     <br>
-    <span id="directions">{{curLocationName}} data: </span>
+    <span id="directions">Enter data for {{curLocationName}}: </span>
 
     <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
     <div id="spacer">&nbsp;</div>

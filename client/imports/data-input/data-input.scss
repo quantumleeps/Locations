@@ -65,34 +65,24 @@ body {
     border: 1px solid black;
 }
 .groupswitchbutton {
-    // margin: 3px; 
-    // padding: 3px;
-    font-size: 30px;
+    margin: 4px; 
     display:inline-block;
+    font-size: 30px!important;
 }
 .groupswitchbutton-expanded {
     margin: 4px; 
-    padding: 4px;
-    font-size: 60px;
     display:inline-block;
+    font-size: 60px!important;
 }
 .buttonbar {
     overflow-x: auto;
     white-space: nowrap;
-    // border-top: 2px solid black;
-    // margin-top: 8px;
-    // margin-bottom: 10px;
     text-align: center;
-    font-size: 30px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .buttonbar-expanded {
-    // border-top: 2px solid black;
-    margin-top: 8px;
-    margin-bottom: 10px;
     text-align: center;
-    font-size: 60px;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 #spacer {
     height: 140px;
@@ -121,7 +111,8 @@ body {
     text-align: center;
 }
 #expand-button {
-    font-size: 30px;
-    margin-top: 15px;
-    margin-bottom: 8px;
+    font-size:30px!important;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-bottom: 30px;
 }
