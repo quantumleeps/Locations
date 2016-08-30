@@ -1,0 +1,7 @@
+
+<div *ngFor="let person of people; let i = index">
+    <button class="btn btn-default btn-lg" (click)="decreaseDrawOrder(i)"><span class="glyphicon glyphicon-arrow-up"></span></button>
+    <button class="btn btn-default btn-lg" (click)="increaseDrawOrder(i)"><span class="glyphicon glyphicon-arrow-down"></span></button>
+    {{person.name}} - {{person.value}}
+</div>
+
