@@ -7,11 +7,16 @@
   
   <span class="details-info">Locations:</span>
   <br>
-  <div class="location-block" *ngFor="let location of locations ">
+  <div class="location-block" *ngFor="let location of locations">
     <span><b><a [routerLink]="[ 'location', location._id] ">{{location.name}}</a></b> ({{location.shortName}})</span>
     <div>
       {{location.region}}, {{location.country}}
     </div>
-    <button (click)="deleteLocation(location)" class="btn btn-default">Delete Location</button>
+    <button *ngIf="!areYouSureToggle" (click)="deleteButtonClick()" class="btn btn-default">Delete Location</button>
+    <button *ngIf="areYouSureToggle" (click)="cancelDelete()" class="btn btn-default">Cancel</button>
+    <span style="font-size: 15px" *ngIf="areYouSureToggle">
+      Are you sure you want to delete the location and all of its datagroups and datapoints? This cannot be undone.
+      <button [disabled]="true" (click)="deleteLocation(location._id)" class="btn btn-small btn-warning">Yes</button>
+    </span>
   </div>
 </div>

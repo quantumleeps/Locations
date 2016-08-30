@@ -32,6 +32,7 @@ export class DataGroupsForm implements OnInit {
         if (this.addDataGroupsForm.valid) {
                 var tempVal = this.addDataGroupsForm.value
                 tempVal['locationId'] = this.curLocation;
+                tempVal['drawOrder'] = 0;
                 DataGroups.insert(tempVal);
 
 

@@ -12,10 +12,10 @@ import template from './locations-form.component.html';
 
 export class LocationsForm implements OnInit {
     addLocationForm: FormGroup;
-    
-    constructor(private formBuilder: FormBuilder) {}
 
-    ngOnInit () {
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit() {
         this.addLocationForm = this.formBuilder.group({
             name: ['', Validators.required],
             shortName: [],
@@ -31,10 +31,9 @@ export class LocationsForm implements OnInit {
         this.addLocationForm.controls['country']['updateValue']('');
     }
 
-    addLocation () {
+    addLocation() {
         if (this.addLocationForm.valid) {
             Locations.insert(this.addLocationForm.value);
-
             this.resetForm();
         }
     }

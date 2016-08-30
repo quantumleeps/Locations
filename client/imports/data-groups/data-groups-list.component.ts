@@ -22,19 +22,12 @@ export class DataGroupsList extends MeteorComponent implements OnInit {
     @Input() curLocation: string;
     dataGroups: Mongo.Cursor<DataGroup>;
     dataPoints: any;
-    // tempArray: any[];
-    // locationId: string;
-    dataGroupAddToggled: boolean;
 
     constructor() {
         super();
     }
 
     ngOnInit() {
-        // console.log(this.curLocation);
-        this.dataGroupAddToggled = false;
-
-        // this.locationId = 'Mh3wH5nn6GMg2euEw';
 
         this.subscribe('data-groups', () => {
             this.dataGroups = DataGroups.find({ "locationId": this.curLocation })
@@ -49,12 +42,6 @@ export class DataGroupsList extends MeteorComponent implements OnInit {
         })
 
 
-    }
-
-    changeAdderToggle() {
-        if (this.dataGroupAddToggled === true) {
-            this.dataGroupAddToggled = false;
-        } else { this.dataGroupAddToggled = true; }
     }
     
     duplicateGroup(ref) {
@@ -91,6 +78,39 @@ export class DataGroupsList extends MeteorComponent implements OnInit {
     deleteGroup(ref) {
         DataGroups.remove({_id: ref['_id']});
     }
+
+    sortIt(ref) {
+        ref.sort(function(a,b) {
+            if (a.drawOrder > b.drawOrder) {
+                return 1;
+            }
+            if (a.drawOrder < b.drawOrder) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        })
+    }
+
+    // //draw orders start at 0
+    // decreaseDrawOrder(i) {
+    //     if (i === 0) {
+    //         // can't do anything'
+    //     } else {
+    //         this.people[(i-1)]['drawOrder']++;
+    //         this.people[i]['drawOrder']--;
+    //         this.sortIt(this.people);
+    //     }
+    // }
+
+    // increaseDrawOrder(i) {
+    //     if (i === (this.people.length-1)) {
+    //     } else {
+    //         this.people[(i+1)]['drawOrder']--;
+    //         this.people[i]['drawOrder']++;
+    //         this.sortIt(this.people)
+    //     }
+    // }
 
 }
 

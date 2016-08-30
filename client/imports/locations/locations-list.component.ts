@@ -6,6 +6,8 @@ import { LocationsForm } from './locations-form.component';
 
 import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
+import { DataGroups } from '../../../both/collections/data-groups.collection';
+import { DataPoints } from '../../../both/collections/data-points.collection';
 
 
 import template from './locations-list.component.html';
@@ -25,36 +27,57 @@ import template from './locations-list.component.html';
 
 export class LocationsList extends MeteorComponent implements OnInit {
 
-    // filteredLocations: any;
     locations: Mongo.Cursor<Location>;
-    // locationId: string;
-    locationAddToggled: boolean;
+    dataGroups: any;
+    dataPoints: any;
+    areYouSureToggle: boolean = false;
 
     constructor() {
         super();
     }
 
     ngOnInit() {
-        this.locationAddToggled = false;
-        // this.locationId = 'Mh3wH5nn6GMg2euEw';
 
         this.subscribe('locations', () => {
             this.locations = Locations.find()
         })
 
-        // this.subscribe('location', this.locationId, () => {
-        //     this.filteredLocations = Locations.find({_id: this.locationId})
-        // })
+        this.subscribe('data-groups', () => {
+            this.dataGroups = DataGroups.find()
+        })
+
+        this.subscribe('data-points', () => {
+            this.dataPoints = DataPoints.find()
+        })
 
     }
 
-    changeAdderToggle() {
-        if (this.locationAddToggled === true) {
-            this.locationAddToggled = false;
-        } else {this.locationAddToggled = true;}
+    deleteButtonClick() {
+        this.areYouSureToggle = true;
     }
 
-    deleteLocation (current) {
-        Locations.remove(current._id);
+    deleteLocation(current) {
+        // delete the location
+        Locations.remove(current);
+
+        // delete any of its datagroups (cleanup)
+        var temp1 = DataGroups.find({ locationId: current }).fetch();
+        for(var i = 0; i<temp1.length; i++) {
+            console.log('group id: ', temp1[i])
+            DataGroups.remove(temp1[i]['_id'])
+        }
+
+        // delete any of its datapoints (cleanup)
+        var temp2 = DataPoints.find({ locationId: current }).fetch();
+        for(var i = 0; i<temp2.length; i++) {
+            console.log('data id: ', temp2[i])
+            DataPoints.remove(temp2[i]['_id'])
+        }
+
+        // reset the toggle
+        this.areYouSureToggle = false;
+    }
+    cancelDelete() {
+        this.areYouSureToggle = false;
     }
 }
