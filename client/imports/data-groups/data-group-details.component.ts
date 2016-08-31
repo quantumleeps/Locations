@@ -8,13 +8,15 @@ import { Location } from '../../../both/interfaces/location.interface';
 import { Locations } from '../../../both/collections/locations.collection';
 import { DataGroup } from '../../../both/interfaces/data-group.interface';
 import { DataGroups } from '../../../both/collections/data-groups.collection'
+import { NonBreaking } from './nonbreaking.pipe';
 
 import template from './data-group-details.component.html';
 
 @Component({
     selector: 'data-group-details',
     template,
-    directives: [ROUTER_DIRECTIVES, DataPointsList]
+    directives: [ROUTER_DIRECTIVES, DataPointsList],
+    pipes: [NonBreaking]
 })
 
 export class DataGroupDetails extends MeteorComponent implements OnInit {

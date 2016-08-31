@@ -3,7 +3,7 @@
 <div class="container-fluid" style="width: 94%">
 
     <header *ngIf="location && dataGroup && !editing">
-            <a class="navlink" [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name}}</a>
+            <a class="navlink" [routerLink]="['/configure/location', location._id]">Back to data groups for {{location.name | nonbreaking}}</a>
 
         <span class="details-info">
             <br>{{dataGroup.name}} - {{location.name}}<br>

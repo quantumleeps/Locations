@@ -97,6 +97,7 @@ export class DataInputForm extends MeteorComponent implements OnInit, OnChanges 
 
     onBlur(ref) {
         delete ref['focused']
+        
     }
 
 }

@@ -8,6 +8,7 @@ import { DataGroup } from '../../../both/interfaces/data-group.interface';
 import { DataGroups } from '../../../both/collections/data-groups.collection';
 import { DataPoints } from '../../../both/collections/data-points.collection';
 import { DataGroupsForm } from './data-groups-form.component';
+
  
 import template from './data-groups-list.component.html';
 

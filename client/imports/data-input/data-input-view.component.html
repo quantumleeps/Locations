@@ -1,40 +1,51 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <span style="font-size: 50px; text-align: center; margin-left: 10px;"><b>{{curLocationName}} </b>
-    <button style="font-size: 40px!important; margin-left: 10px; margin-bottom: 4px" *ngIf="!chooserActive" (click)="toggleChooser()" class="btn btn-success">{{curDataGroupName}} <span class="glyphicon glyphicon-chevron-down"></span></button>
-    </span>
-    <div *ngIf="chooserActive" class="container-fluid">
-        <span *ngFor="let dataGroup of dataGroups">
-            <button
-            [class.btn-success]="dataGroup._id === curDataGroup"
-            [class.btn-info]="dataGroup._id != curDataGroup"
-            class="btn groupswitchbutton-expanded" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}} <span *ngIf="dataGroup._id === curDataGroup">&#10004;</span></button>
-        </span>
+    <div class="container-fluid" style="opacity: 0.94; background-color: white; padding-top: 10px;">
+        <div class="row" style="margin-right: 15px">
+            <div class="col-xs-6">
+                <span style="font-size: 55px; text-align: center; margin-left: 20px;"><b>{{curLocationName}}: </b>
+            </div>
+            <div class="col-xs-6" style="text-align: right">
+                <button [disabled]="submitActive" id="groupswitchbutton" style="font-size: 40px" class="btn btn-sm btn-info m-r-1" (click)="toggleCancel()">Cancel</button>
+                <button [disabled]="cancelActive" id="groupswitchbutton" style="font-size: 40px" class="btn btn-sm btn-info" (click)="toggleSubmit()">Submit</button>
+            </div>
+        </div>
     </div>
+    <div id="topmarker" *ngIf="cancelActive" class="row text-xs-right m-t-1" style="font-size: 30px!important">
+            <div class="d-inline bg-warning p-a-3 m-a-2" style="border-radius: 5px">
+                Permanently delete record?
+                <button style="font-size: 40px!important" class="m-l-1 m-y-1 btn btn-danger" (click)="cancelEntry()">Yes</button>
+                 <button style="font-size: 40px!important" class="m-l-1 m-y-1 btn btn-danger" (click)="toggleCancel()">No</button>
+            </div>
+        </div>
+        <div *ngIf="submitActive" class="row text-xs-right m-t-1" style="font-size: 30px!important">
+            <div class="d-inline bg-info p-a-3 m-a-2" style="border-radius: 5px">
+                Is the record complete?
+                <button style="font-size: 40px!important" class="m-l-1 m-y-1 btn btn-success" (click)="saveEntry()">Yes</button>
+                 <button style="font-size: 40px!important" class="m-l-1 m-y-1 btn btn-success" (click)="toggleSubmit()">No</button>
+            </div>
+        </div>
 </nav>
 <div class="container-fluid" id="main-data-entry">
-    <div style="margin-top: 60px">&nbsp;
+    <div style="margin-top: 62px">&nbsp;
     </div>
 
-    <!--<div class="container-fluid" [class.buttonbar]="!expanded" [class.buttonbar-expanded]="expanded">
-        <span *ngFor="let dataGroup of dataGroups">
-            <button [class.groupswitchbutton]="!expanded" [class.groupswitchbutton-expanded]="expanded"
-            [class.btn-primary]="dataGroup._id === curDataGroup"
+            <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
+            <div id="spacer">&nbsp;</div>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="row">
+                <div *ngIf="!chooserActive" (click)="toggleChooser()" style="font-size: 50px!important" class="col-xs-12 btn btn-success p-y-2">
+                     <i class="fa fa-sort" aria-hidden="true"></i> <b>{{curDataGroupName}}</b>
+                </div>
+                <div *ngIf="chooserActive" class="container-fluid">
+                    <span *ngFor="let dataGroup of dataGroups">
+            <button type="button" style="margin-bottom: 4px"
+            [class.btn-success]="dataGroup._id === curDataGroup"
             [class.btn-info]="dataGroup._id != curDataGroup"
-            class="btn" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}}</button>
-        </span>
-        
-    </div>-->
-    <!--<div id="expand-button" *ngIf="!expanded" (click)="toggleExpanded()" class="btn btn-default">Expand</div>
-    <div id="expand-button" *ngIf="expanded" (click)="toggleExpanded()" class="btn btn-default">Collapse</div>
-    <br>
-    <span id="directions">Enter data for {{curLocationName}}: </span>-->
+            class="btn groupswitchbutton-expanded" (click)="changeCurGroup(dataGroup._id)">{{dataGroup.name}} <span *ngIf="dataGroup._id === curDataGroup"><i class="fa fa-check" aria-hidden="true"></i></span></button>
+                </span>
+            </div>
+        </div>
 
-    <data-input-form [curDataGroup]="curDataGroup" [curRecord]="curRecord" [dataInputFields]="dataInputFields"></data-input-form>
-    <div id="spacer">&nbsp;</div>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <button id="groupswitchbutton" style="font-size: 40px" class="btn btn-sm btn-info" (click)="cancelEntry()">Cancel record</button>
-        <button id="groupswitchbutton" style="font-size: 40px" class="btn btn-sm btn-info" (click)="saveEntry()">Submit record</button>
-    </div>
 </nav>

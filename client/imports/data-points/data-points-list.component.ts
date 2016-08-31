@@ -43,16 +43,10 @@ export class DataPointsList extends MeteorComponent implements OnInit {
     }
 
     ngOnInit() {
-        // console.log(this.curLocation);
         this.dataPointAddToggled = false;
-        // console.log(this.dataPointAddToggled)
-        // this.locationId = 'Mh3wH5nn6GMg2euEw';
-        console.log(this.curLocation);
-        console.log(this.curDataGroup)
+
         this.subscribe('data-points', () => {
             this.dataPoints = DataPoints.find({ "locationId": this.curLocation, "dataGroupId": this.curDataGroup })
-            // console.log(this.dataPoints)// this.tempArray = this.dataGroups.map(function (a) {
-            //     return a.name
         })
 
 
