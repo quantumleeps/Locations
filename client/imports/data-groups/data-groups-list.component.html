@@ -10,10 +10,10 @@ Add a new data group:
 
       </div>
       <div class="col-xs-6">
-        <button [disabled]="true" (click)="deleteGroup(dataGroup)" class="btn btn-default">Delete</button>
+        <button [disabled]="false" (click)="deleteGroup(dataGroup)" class="btn btn-default">Delete</button>
         <button [disabled]="true" class="btn btn-default">Move Up</button>
         <button [disabled]="true" class="btn btn-default">Move down</button>
-        <button [disabled]="true" (click)="duplicateGroup(dataGroup)" class="btn btn-default">Duplicate</button>
+        <button [disabled]="false" (click)="duplicateGroup(dataGroup)" class="btn btn-default">Duplicate</button>
       </div>
     </div>
 
