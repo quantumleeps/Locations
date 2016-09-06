@@ -57,6 +57,30 @@
         <button class="btn btn-default" (click)="saveUpperLimit(dataPoint)">Save</button></span>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Lower physical limit: </b></label>
+                    <span [hidden]="dataPoint.isEditingLL">{{dataPoint.lowerLimit}}</span>
+                    <span [hidden]="!dataPoint.isEditingLL"><input type="text" [(ngModel)]="dataPoint.lowerLimit">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingLL"><button class="btn btn-default" (click)="dataPoint.isEditingLL=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingLL">
+        <button class="btn btn-default" (click)="saveLowerLimit(dataPoint)">Save</button></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <label><b>Upper physical limit: </b></label>
+                    <span [hidden]="dataPoint.isEditingUL">{{dataPoint.upperLimit}}</span>
+                    <span [hidden]="!dataPoint.isEditingUL"><input type="text" [(ngModel)]="dataPoint.upperLimit">
+        </span><br> </div>
+                <div class="col-xs-2">
+                    <span [hidden]="dataPoint.isEditingUL"><button class="btn btn-default" (click)="dataPoint.isEditingUL=true">edit</button></span>
+                    <span [hidden]="!dataPoint.isEditingUL">
+        <button class="btn btn-default" (click)="saveUpperLimit(dataPoint)">Save</button></span>
+                </div>
+            </div>
             
             <!--<div class="row">
                 <div class="col-xs-6">
