@@ -10,6 +10,7 @@
                 <th>Unit</th>
                 <th>Qty</th>
                 <th>Description</th>
+                <th>Modify</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,15 @@
                 <td>{{line.units}}</td>
                 <td>{{line.quantity}}</td>
                 <td>{{line.valueString}}</td>
+                <td>
+                    <span *ngIf="!line.deleteClicked">
+                        <button (click)="line.deleteClicked=true">Delete</button>
+                    </span>
+                    <span *ngIf="line.deleteClicked">
+                        Are you sure you want to delete this line? 
+                        <button (click)="line.deleteClicked=false">No</button> <button (click)="deleteLine(line)">Yes</button>
+                    </span>
+                </td>
             </tr>
         </tbody>
     </table>

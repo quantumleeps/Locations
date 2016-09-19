@@ -44,7 +44,7 @@ export class BOMInput implements OnInit {
             type: 'flange-ring',
             materialsAvailable: ['HDPE']
         }, {
-            description: 'Reducer coupling',
+            description: 'Concentric reducer',
             type: 'reducer',
             materialsAvailable: ['PVC', 'HDPE', '316 SS', 'Super Duplex SS', 'FRP']
         }, {
@@ -59,6 +59,14 @@ export class BOMInput implements OnInit {
             description: 'Tee',
             type: 'typical',
             materialsAvailable: ['PVC', 'HDPE', '316 SS', 'Super Duplex SS', 'FRP']
+        }, {
+            description: '150# Weld-neck Flange',
+            type: 'flange',
+            materialsAvailable: ['316 SS', 'Super Duplex SS']
+        }, {
+            description: '45 Deg Ell',
+            type: 'typical',
+            materialsAvailable: ['PVC', 'HDPE', '316 SS', 'Super Duplex SS', 'FRP']
         }];
 
     schedulesNew = [
@@ -67,10 +75,10 @@ export class BOMInput implements OnInit {
             schedules: ['Sch 40', 'Sch 80']
         }, {
             material: '316 SS',
-            schedules: ['Sch 40', 'Sch 80', 'Sch 160']
+            schedules: ['Sch 5s', 'Sch 10s', 'Sch 40s', 'Sch 80s', 'Sch 160s']
         }, {
             material: 'Super Duplex SS',
-            schedules: ['Sch 40', 'Sch 80', 'Sch 160']
+            schedules: ['Sch 5s', 'Sch 10s', 'Sch 40s', 'Sch 80s', 'Sch 160s']
         }, {
             material: 'HDPE',
             schedules: ['DR11', 'DR17', 'DR26']
@@ -125,7 +133,8 @@ export class BOMInput implements OnInit {
         BOMLines.insert({
                 valueString: fittingString.toUpperCase(),
                 quantity: this.fittingQty,
-                units: "EA"
+                units: "EA",
+                deleteClicked: false
             })
     }
 
