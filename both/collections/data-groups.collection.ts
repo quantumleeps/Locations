@@ -1,5 +1,6 @@
-import { Mongo } from 'meteor/mongo';
+import { MongoObservable } from 'meteor-rxjs';
+import { Meteor } from 'meteor/meteor';
 
-import { DataGroup } from '../interfaces/data-group.interface';
+import { DataGroup } from '../models/data-group.model';
 
-export const DataGroups = new Mongo.Collection<DataGroup>('data-groups')
+export const DataGroups = new MongoObservable.Collection<DataGroup>('data-groups');

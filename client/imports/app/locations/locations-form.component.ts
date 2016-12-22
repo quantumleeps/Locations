@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Locations } from '../../../both/collections/locations.collection';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Meteor } from 'meteor/meteor';
+
+import { Locations } from '../../../../both/collections/locations.collection';
 
 import template from './locations-form.component.html';
 
 @Component({
     selector: 'locations-form',
-    template,
-    directives: [REACTIVE_FORM_DIRECTIVES]
+    template
 })
 
 export class LocationsForm implements OnInit {
@@ -33,7 +34,7 @@ export class LocationsForm implements OnInit {
 
     addLocation() {
         if (this.addLocationForm.valid) {
-            Locations.insert(this.addLocationForm.value);
+            Locations.insert(Object.assign({}, this.addLocationForm.value));
             this.resetForm();
         }
     }

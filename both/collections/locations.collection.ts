@@ -1,4 +1,6 @@
-import { Mongo } from 'meteor/mongo';
-import { Location } from '../interfaces/location.interface';
+import { MongoObservable } from 'meteor-rxjs';
+import { Meteor } from 'meteor/meteor';
 
-export const Locations = new Mongo.Collection<Location>('locations')
+import { Location } from '../models/location.model';
+
+export const Locations = new MongoObservable.Collection<Location>('locations');

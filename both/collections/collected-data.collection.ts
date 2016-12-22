@@ -1,3 +1,6 @@
-import { Mongo } from 'meteor/mongo';
+import { MongoObservable } from 'meteor-rxjs';
+import { Meteor } from 'meteor/meteor';
 
-export const CollectedData = new Mongo.Collection('collected-data')
+import { CollectedDataRecord } from '../models/collected-data-record.model';
+
+export const CollectedData = new MongoObservable.Collection<CollectedDataRecord>('collected-data');

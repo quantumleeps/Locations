@@ -1,5 +1,6 @@
-export interface DataPoint {
-    id_?: string;
+import { CollectionObject } from './collection-object.model';
+
+export interface DataPoint extends CollectionObject {
     description: string;
     units: string;
     lowerLimit?: string;

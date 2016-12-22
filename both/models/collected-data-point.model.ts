@@ -1,4 +1,6 @@
-export interface CollectedDataPoint {
+import { CollectionObject } from './collection-object.model';
+
+export interface CollectedDataPoint extends CollectionObject {
     dataPointId: string;
     timestamp: string;
     value: string;
